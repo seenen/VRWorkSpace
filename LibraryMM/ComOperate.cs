@@ -30,7 +30,7 @@ namespace LibraryMM
             //进程间同步
             mMutex = new Mutex(true, info.mMutexName, out mutexCreated);
 
-            info.mmf.CreateViewStream(); //创建文件内存视图流 基于流的操作
+            //info.mmf.CreateViewStream(); //创建文件内存视图流 基于流的操作
             
             mBinaryWriter = new BinaryWriter(info.mmf.CreateViewStream());
 
@@ -43,26 +43,32 @@ namespace LibraryMM
         {
             mMutex.WaitOne();
 
+            using (var stream = mMmfInfo.mmf.CreateViewStream()) //创建文件内存视图流 基于流的操作
+            {
+                var writer = new BinaryWriter(stream);
+
+                writer.Write(content);
+
+                Console.WriteLine("写入内存:" + content);
+            }
             mBinaryWriter.Write(content);
 
-            Console.WriteLine("写入内存:" + content);
-
-            mMutex.ReleaseMutex();
+            mMutex.ReleaseMutex(); 
 
         }
 
-        byte[] readbytes = null;
+        //byte[] readbytes = null;
 
-        public byte[] ReadBytes(int len)
-        {
-            mMutex.WaitOne();
+        //public byte[] ReadBytes(int len)
+        //{
+        //    mMutex.WaitOne();
 
-            readbytes = mBinaryReader.ReadBytes(len);
+        //    readbytes = mBinaryReader.ReadBytes(len);
 
-            mMutex.ReleaseMutex();
+        //    mMutex.ReleaseMutex();
 
-            return readbytes;
-        }
+        //    return readbytes;
+        //}
 
         string readstring = null;
 
@@ -70,9 +76,14 @@ namespace LibraryMM
         {
             mMutex.WaitOne();
 
-            readstring = mBinaryReader.ReadString();
+            using (var stream = mMmfInfo.mmf.CreateViewStream()) //创建文件内存视图流 基于流的操作
+            {
+                var reader = new BinaryReader(stream);
 
-            Console.WriteLine("读取内存:" + readstring);
+                readstring = mBinaryReader.ReadString();
+
+                Console.WriteLine("读取内存:" + readstring);
+            }
 
             mMutex.ReleaseMutex();
 

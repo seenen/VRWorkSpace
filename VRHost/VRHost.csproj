@@ -42,6 +42,9 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JsonFx.Json">
+      <HintPath>..\..\VR3rd\JsonFx.Json.dll</HintPath>
+    </Reference>
     <Reference Include="LibraryMM">
       <HintPath>..\Output\LibraryMM.dll</HintPath>
     </Reference>
@@ -94,7 +97,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\Output\</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

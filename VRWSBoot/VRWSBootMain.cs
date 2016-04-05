@@ -16,8 +16,9 @@ namespace VRWSBoot
 
         static void Main(string[] args)
         {
-            mWSManager = new WSManager(MapName, "");
+            mWSManager = new WSManager(MapName, MutexName);
             mWSManager.StartHost();
+            mWSManager.StartClient();
 
             Console.ReadLine();
 

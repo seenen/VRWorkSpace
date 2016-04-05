@@ -10,23 +10,23 @@ namespace VRHost
 
         static string MutexName = "TestMutexName";
 
+        public static Form1 mForm1 = null;
+
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
         static void Main()
         {
-            //mSec = new MemoryMappedFileSecurity();
-            //SecurityIdentifier si = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-            //AccessRule<MemoryMappedFileRights> ar = new AccessRule<MemoryMappedFileRights>(si, MemoryMappedFileRights.FullControl, AccessControlType.Allow);
-            //mSec.AddAccessRule(ar);
-
             string[] arg = Environment.GetCommandLineArgs();
 
-            MapName = arg[0];
-            MutexName = arg[1];
+            if (arg.Length == 3)
+            {
+                MapName = arg[0];
+                MutexName = arg[1];
+            }
 
-            Console.WriteLine(MapName + " " + MutexName);
+            Console.WriteLine("VRHostMain " + MapName + " " + MutexName);
 
             mMemoryMap = new MemoryMap();
 
@@ -34,18 +34,20 @@ namespace VRHost
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            mForm1 = new Form1();
+            Application.Run(mForm1);
         }
 
         static MemoryMap mMemoryMap = null;
 
-        public static ComOperate coLocal;
+        public static ComOperate nonePersistent;
 
         static void CreateWriteMemory()
         {
             try
             {
-                coLocal = mMemoryMap.CreateNonPersistentMappedFile(MapName, MutexName);
+                nonePersistent = mMemoryMap.CreateNonPersistentMappedFile(MapName, MutexName);
             }
             catch(Exception e)
             {

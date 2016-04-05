@@ -18,7 +18,7 @@ namespace LibraryMM
 
         Mutex mMutex = null;
 
-        MemoryMappedViewAccessor accessor;
+        MemoryMappedViewStream stream;
 
         public ReadOperate(MmfInfo info)
         {
@@ -26,23 +26,38 @@ namespace LibraryMM
 
             mMutex = Mutex.OpenExisting(info.mMutexName);
 
-            accessor = info.mmf.CreateViewAccessor(1024, 10240);
+            stream = info.mmf.CreateViewStream(1, 0);
         }
 
-        public void ReadString()
+        string readstring = null;
+
+        public string ReadString()
         {
-            int colorSize = Marshal.SizeOf(typeof(Msg));
-            var color = new Msg();
+            mMutex.WaitOne();
 
-            for (int i = 0; i < colorSize * 5; i += colorSize)
-            {
-                color.Id = i;
-                color.NowTime = DateTime.Now.Ticks;
+            readstring = mBinaryReader.ReadString();
 
-                accessor.Write(i, ref color);
+            Console.WriteLine("读取内存:" + readstring);
 
-                Console.WriteLine("{1}\tNowTime:{0}", new DateTime(color.NowTime), color.Id);
-            }
+            mMutex.ReleaseMutex();
+
+            return readstring;
         }
+
+        //public void ReadString()
+        //{
+        //    int colorSize = Marshal.SizeOf(typeof(Msg));
+        //    var color = new Msg();
+
+        //    for (int i = 0; i < colorSize * 5; i += colorSize)
+        //    {
+        //        color.Id = i;
+        //        color.NowTime = DateTime.Now.Ticks;
+
+        //        accessor.Write(i, ref color);
+
+        //        Console.WriteLine("{1}\tNowTime:{0}", new DateTime(color.NowTime), color.Id);
+        //    }
+        //}
     }
 }

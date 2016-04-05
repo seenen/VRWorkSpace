@@ -15,9 +15,19 @@ namespace VRClient
         [STAThread]
         static void Main()
         {
+            string[] arg = Environment.GetCommandLineArgs();
+
+            if (arg.Length == 3)
+            {
+                MapName = arg[0];
+                MutexName = arg[1];
+            }
+
+            Console.WriteLine("VRClientMain " + MapName + " " + MutexName);
+
             mMemoryMap = new MemoryMap();
 
-            CreateReaderMemory();
+            //CreateReaderMemory();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -30,10 +40,18 @@ namespace VRClient
 
         static string MutexName = "TestMutexName";
 
-        public static ComOperate coReader;
+        public static ReadOperate coReader;
 
         static void CreateReaderMemory()
         {
+            try
+            {
+                coReader = mMemoryMap.OpenNonPersistentMappedFile(MapName, MutexName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

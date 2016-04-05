@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="ComOperate.cs" />
     <Compile Include="MemoryMap.cs" />
+    <Compile Include="MMF.cs" />
     <Compile Include="MmfInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadOperate.cs" />
+    <Compile Include="TestMsg.cs" />
     <Compile Include="WriteOperate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LibraryMM;
+using System;
 using System.Windows.Forms;
 
 namespace VRHost
@@ -22,12 +16,18 @@ namespace VRHost
 
         private void MemWriteInit_Click(object sender, EventArgs e)
         {
+            TestMsg tm = (TestMsg)MMF.ReadObjectFromMMF("TestMsg");
 
+            string str = JsonFx.Json.JsonWriter.Serialize(tm);
+
+            ViewList("MMF.ReadObjectFromMMF " + str);
         }
 
         private void Write_Click(object sender, EventArgs e)
         {
-            VRHostMain.coLocal.WriteString(writeIndex.ToString());
+            ViewList("Write_Click " + writeIndex.ToString());
+
+            VRHostMain.nonePersistent.WriteString(writeIndex.ToString());
 
             writeIndex++;
         }
@@ -41,8 +41,30 @@ namespace VRHost
 
         private void Read_Click(object sender, EventArgs e)
         {
-            VRHostMain.coLocal.ReadString();
+            string content = VRHostMain.nonePersistent.ReadString();
+
+            ViewList("Read_Click " + content);
+
         }
         #endregion
+
+        public void ViewList(string content)
+        {
+            writeView.Items.Add(content, 0);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TestMsg tm = new TestMsg();
+            tm.age = "123";
+            tm.name = "456";
+            tm.st = System.DateTime.Now;
+
+            MMF.WriteObjectToMMF("TestMsg", tm);
+
+            string str = JsonFx.Json.JsonWriter.Serialize(tm);
+
+            ViewList("MMF.WriteObjectToMMF " + str);
+        }
     }
 }

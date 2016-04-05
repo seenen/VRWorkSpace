@@ -1,0 +1,25 @@
+﻿FightData=E:\Heros\Client\GameEditors\GameEditor\data
+
+//	默认资源下载包名.
+UPDATE_DEFAULT_RESNAME=first
+
+//	CDN1.(进局域网可用,226是吴老板机器，13是通用内网，142是非正式外网地址).
+//UPDATE_REMOTE_ROOT_URL=http://192.168.1.226/test/http/res/			
+//UPDATE_REMOTE_ROOT_URL=http://101.251.213.250:8080/qa_res/			
+//UPDATE_REMOTE_ROOT_URL=http://192.168.1.13:8081/design_res_server/			
+//UPDATE_REMOTE_ROOT_URL=http://101.251.223.142:8080/release/			
+//UPDATE_REMOTE_ROOT_URL=http://192.168.1.13:8081/out_res_server/
+UPDATE_REMOTE_ROOT_URL=http://192.168.1.13:8081/qa_res_server_a/
+
+//	打开 —— 标识资源下载地址是局域网直接下载.
+//	关闭 —— 从一号通获取更新列表.
+UPDATE_NETWORK=LAN
+
+//	一号通.(把UPDATE_NETWORK注释掉才有效).
+//	一号通返回的 资源服目录 http://101.251.223.142:8080/ver/
+MF_YHT_URL=http://192.168.1.44:18080/passport/common
+//MF_YHT_URL=http://yhtcs.morefuntek.com:18023/passport/common
+//MF_YHT_URL=http://yht.morefuntek.com/common
+
+//	代理服.
+PROXY_URL = 0

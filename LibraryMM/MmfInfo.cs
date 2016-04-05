@@ -31,7 +31,8 @@ namespace LibraryMM
     {
         public string mMappedName = string.Empty;
 
-        public long mMappedCapacity = 0;
+        //  默认1M
+        public long mMappedCapacity = 1024 * 1024;
 
         public string mMutexName = string.Empty;
 
@@ -40,6 +41,11 @@ namespace LibraryMM
         public COErrorCode errorCode = COErrorCode.No_Error;
 
         public MemoryMappedFile mmf;
+
+        //  是否是持久化内存读写
+        public bool IsPersistent = false;
+
+        public string PersistentFilePath = string.Empty;
     }
 
     /// <summary>
