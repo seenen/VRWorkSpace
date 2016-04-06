@@ -28,21 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.unity3dControl1 = new VRClient.Unity3dControl();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.readView = new System.Windows.Forms.ListView();
-            this.Read = new System.Windows.Forms.Button();
             this.ReadMMF = new System.Windows.Forms.Button();
+            this.Read = new System.Windows.Forms.Button();
+            this.unity3dControl2 = new VRClient.Unity3dControl();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // unity3dControl1
-            // 
-            this.unity3dControl1.Location = new System.Drawing.Point(460, 12);
-            this.unity3dControl1.Name = "unity3dControl1";
-            this.unity3dControl1.Size = new System.Drawing.Size(760, 333);
-            this.unity3dControl1.TabIndex = 0;
             // 
             // button1
             // 
@@ -74,16 +67,6 @@
             this.readView.TabIndex = 2;
             this.readView.UseCompatibleStateImageBehavior = false;
             // 
-            // Read
-            // 
-            this.Read.Location = new System.Drawing.Point(54, 78);
-            this.Read.Name = "Read";
-            this.Read.Size = new System.Drawing.Size(75, 23);
-            this.Read.TabIndex = 1;
-            this.Read.Text = "读取";
-            this.Read.UseVisualStyleBackColor = true;
-            this.Read.Click += new System.EventHandler(this.Read_Click);
-            // 
             // ReadMMF
             // 
             this.ReadMMF.Location = new System.Drawing.Point(54, 156);
@@ -94,14 +77,31 @@
             this.ReadMMF.UseVisualStyleBackColor = true;
             this.ReadMMF.Click += new System.EventHandler(this.ReadMMF_Click);
             // 
+            // Read
+            // 
+            this.Read.Location = new System.Drawing.Point(54, 78);
+            this.Read.Name = "Read";
+            this.Read.Size = new System.Drawing.Size(75, 23);
+            this.Read.TabIndex = 1;
+            this.Read.Text = "读取";
+            this.Read.UseVisualStyleBackColor = true;
+            this.Read.Click += new System.EventHandler(this.Read_Click);
+            // 
+            // unity3dControl2
+            // 
+            this.unity3dControl2.Location = new System.Drawing.Point(348, 43);
+            this.unity3dControl2.Name = "unity3dControl2";
+            this.unity3dControl2.Size = new System.Drawing.Size(760, 396);
+            this.unity3dControl2.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 747);
+            this.Controls.Add(this.unity3dControl2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.unity3dControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox2.ResumeLayout(false);
@@ -111,12 +111,12 @@
 
         #endregion
 
-        private Unity3dControl unity3dControl1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView readView;
         private System.Windows.Forms.Button Read;
         private System.Windows.Forms.Button ReadMMF;
+        private Unity3dControl unity3dControl2;
     }
 }
 

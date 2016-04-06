@@ -31,6 +31,7 @@
             this.PersistentWrite = new System.Windows.Forms.Button();
             this.Write = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.PersistentRead = new System.Windows.Forms.Button();
@@ -38,7 +39,8 @@
             this.writeView = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.MemReadInit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.WriteObj = new System.Windows.Forms.Button();
+            this.ReadObj = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +67,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.WriteObj);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -78,6 +81,16 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "内存写对象";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(137, 187);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "写一个对象";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -128,6 +141,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ReadObj);
             this.groupBox2.Controls.Add(this.MemReadInit);
             this.groupBox2.Location = new System.Drawing.Point(12, 296);
             this.groupBox2.Name = "groupBox2";
@@ -146,15 +160,25 @@
             this.MemReadInit.UseVisualStyleBackColor = true;
             this.MemReadInit.Click += new System.EventHandler(this.MemWriteInit_Click);
             // 
-            // button1
+            // WriteObj
             // 
-            this.button1.Location = new System.Drawing.Point(137, 187);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "写一个对象";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.WriteObj.Location = new System.Drawing.Point(252, 187);
+            this.WriteObj.Name = "WriteObj";
+            this.WriteObj.Size = new System.Drawing.Size(75, 23);
+            this.WriteObj.TabIndex = 4;
+            this.WriteObj.Text = "写一个obj文件";
+            this.WriteObj.UseVisualStyleBackColor = true;
+            this.WriteObj.Click += new System.EventHandler(this.WriteObj_Click);
+            // 
+            // ReadObj
+            // 
+            this.ReadObj.Location = new System.Drawing.Point(252, 46);
+            this.ReadObj.Name = "ReadObj";
+            this.ReadObj.Size = new System.Drawing.Size(75, 23);
+            this.ReadObj.TabIndex = 1;
+            this.ReadObj.Text = "读一个obj文件";
+            this.ReadObj.UseVisualStyleBackColor = true;
+            this.ReadObj.Click += new System.EventHandler(this.ReadObj_Click);
             // 
             // Form1
             // 
@@ -186,6 +210,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button PersistentRead;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button WriteObj;
+        private System.Windows.Forms.Button ReadObj;
     }
 }
 

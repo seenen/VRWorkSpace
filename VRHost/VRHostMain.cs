@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using LibraryMM;
+using System.Collections.Generic;
+using System.IO;
+using LibraryGeometryFormat;
 
 namespace VRHost
 {
@@ -28,9 +31,11 @@ namespace VRHost
 
             Console.WriteLine("VRHostMain " + MapName + " " + MutexName);
 
-            mMemoryMap = new MemoryMap();
+            LoadAllData();
 
-            CreateWriteMemory();
+            //mMemoryMap = new MemoryMap();
+
+            //CreateWriteMemory();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -54,5 +59,26 @@ namespace VRHost
                 Console.WriteLine(e.Message);
             }
         }
+
+        #region OBJFile
+        static int MAX_COUNT = 1;//30;
+
+        //  所有的文件
+        static List<ObjFile> listFiles = new List<ObjFile>();
+
+        static void LoadAllData()
+        {
+            for (int i = 1; i < MAX_COUNT + 1; i++)
+            {
+                string path = "G:/GitHub/VR/Tools/stl2obj/Resources/DataFileObj/" + i.ToString() + ".obj";
+
+                ObjFile of = ObjFile.Load(path);
+
+                listFiles.Add(of);
+            }
+
+        }
+
+        #endregion
     }
 }

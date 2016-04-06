@@ -1,12 +1,6 @@
-﻿using LibraryMM;
+﻿using LibraryGeometryFormat;
+using LibraryMM;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VRClient
@@ -25,16 +19,11 @@ namespace VRClient
             jsStart.age = "1";
             jsStart.st = System.DateTime.Now;
 
-            this.unity3dControl1.SendMessage(jsStart);
+            this.unity3dControl2.SendMessage(jsStart);
         }
 
         #region MMF
         private void Read_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ReadMMF_Click(object sender, EventArgs e)
         {
             TestMsg tm = (TestMsg)MMF.ReadObjectFromMMF("TestMsg");
 
@@ -47,7 +36,21 @@ namespace VRClient
             jsStart.age = tm.age;
             jsStart.st = tm.st;
 
-            this.unity3dControl1.SendMessage(jsStart);
+            this.unity3dControl2.SendMessage(jsStart);
+
+        }
+
+        private void ReadMMF_Click(object sender, EventArgs e)
+        {
+            ObjModelRaw omr = (ObjModelRaw)MMF.ReadObjectFromMMF("ObjFileRaw");
+            string str = JsonFx.Json.JsonWriter.Serialize(omr);
+
+            //ObjModel tm = (ObjModel)MMF.ReadObjectFromMMF("ObjFile");
+            //string str = JsonFx.Json.JsonWriter.Serialize(tm);
+
+            Console.WriteLine("MMF.ReadObjectFromMMF " + str);
+
+            this.unity3dControl2.SendMessage(str);
         }
         #endregion
     }

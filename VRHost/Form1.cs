@@ -1,5 +1,7 @@
-﻿using LibraryMM;
+﻿using LibraryGeometryFormat;
+using LibraryMM;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace VRHost
@@ -9,6 +11,11 @@ namespace VRHost
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public void ViewList(string content)
+        {
+            writeView.Items.Add(content, 0);
         }
 
         #region 写操作
@@ -48,11 +55,6 @@ namespace VRHost
         }
         #endregion
 
-        public void ViewList(string content)
-        {
-            writeView.Items.Add(content, 0);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             TestMsg tm = new TestMsg();
@@ -65,6 +67,38 @@ namespace VRHost
             string str = JsonFx.Json.JsonWriter.Serialize(tm);
 
             ViewList("MMF.WriteObjectToMMF " + str);
+        }
+
+        private void WriteObj_Click(object sender, EventArgs e)
+        {
+            string path = "G:/GitHub/VR/Tools/stl2obj/Resources/DataFileObj/1.obj";
+
+            ObjModelRaw omr = new ObjModelRaw();
+            omr.id = 0;
+            omr.content = File.ReadAllText(path);
+            omr.state = ObjModelRawState.Create;
+
+            MMF.WriteObjectToMMF("ObjFileRaw", omr);
+
+            string str = JsonFx.Json.JsonWriter.Serialize(omr);
+            ViewList("MMF.WriteObjectToMMF " + str);
+
+            ////ObjFile of = ObjFile.Load(path);
+            ////ObjModel om = of.Models[0];
+            ////MMF.WriteObjectToMMF("ObjFile", om);
+
+            ////string str = JsonFx.Json.JsonWriter.Serialize(om);
+            ////ViewList("MMF.WriteObjectToMMF " + str);
+        }
+
+        private void ReadObj_Click(object sender, EventArgs e)
+        {
+            ////ObjModel om = (ObjModel)MMF.ReadObjectFromMMF("ObjFile");
+            ////string str = JsonFx.Json.JsonWriter.Serialize(om);
+
+            ObjModelRaw omr = (ObjModelRaw)MMF.ReadObjectFromMMF("ObjFileRaw");
+            string str = JsonFx.Json.JsonWriter.Serialize(omr);
+            ViewList("MMF.ReadObjectFromMMF " + str);
         }
     }
 }

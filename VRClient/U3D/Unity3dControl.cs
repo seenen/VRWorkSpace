@@ -1,13 +1,8 @@
-﻿using System;
+﻿using AxUnityWebPlayerAXLib;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using AxUnityWebPlayerAXLib;
+using System.ComponentModel;
 
 namespace VRClient
 {
@@ -23,16 +18,15 @@ namespace VRClient
         #region 组件设计器生成的代码
 
         private System.ComponentModel.IContainer components = null;
-        private AxUnityWebPlayerAXLib.AxUnityWebPlayer axUnityWebPlayer1;
+        private AxUnityWebPlayerAXLib.AxUnityWebPlayer axUnityWebPlayer2;
 
         private void InitializeComponent()
         {
             string unitysrc = System.Environment.CurrentDirectory + "\\UserControl\\UserControl.unity3d";
-            string dir = System.Environment.CurrentDirectory;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Unity3dControl));
             this.SuspendLayout();
             {
-                AxHost.State ocxstate = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axUnityWebPlayer1.OcxState")));
+                AxHost.State ocxstate = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axUnityWebPlayer2.OcxState")));
                 {
                     // Create a ocx state object with the correct path
                     AxUnityWebPlayerAXLib.AxUnityWebPlayer _Unity = new AxUnityWebPlayerAXLib.AxUnityWebPlayer();
@@ -45,30 +39,30 @@ namespace VRClient
                     ocxstate = _Unity.OcxState;
                     _Unity.Dispose();
                 }
-                // 
-                // axUnityWebPlayer1
-                //
-                this.axUnityWebPlayer1 = new AxUnityWebPlayerAXLib.AxUnityWebPlayer();
-                ((System.ComponentModel.ISupportInitialize)(this.axUnityWebPlayer1)).BeginInit();
-                this.axUnityWebPlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
-                this.axUnityWebPlayer1.Enabled = true;
-                this.axUnityWebPlayer1.Location = new System.Drawing.Point(0, 0);
-                this.axUnityWebPlayer1.Name = "axUnityWebPlayer1";
-                this.axUnityWebPlayer1.OcxState = ocxstate;
-                this.axUnityWebPlayer1.Size = new System.Drawing.Size(915, 685);
-                this.axUnityWebPlayer1.TabIndex = 0;
-                this.axUnityWebPlayer1.ReadyStateChange += new AxUnityWebPlayerAXLib._DUnityWebPlayerAXEvents_ReadyStateChangeEventHandler(this.ReadyStateChange);
-                this.axUnityWebPlayer1.OnExternalCall += new AxUnityWebPlayerAXLib._DUnityWebPlayerAXEvents_OnExternalCallEventHandler(this.OnExternalCall);
 
-                ((System.ComponentModel.ISupportInitialize)(this.axUnityWebPlayer1)).EndInit();
+                // 
+                // axUnityWebPlayer2
+                // 
+                this.axUnityWebPlayer2 = new AxUnityWebPlayerAXLib.AxUnityWebPlayer();
+                ((System.ComponentModel.ISupportInitialize)(this.axUnityWebPlayer2)).BeginInit();
+                this.axUnityWebPlayer2.Dock = System.Windows.Forms.DockStyle.Fill;
+                this.axUnityWebPlayer2.Enabled = true;
+                this.axUnityWebPlayer2.Location = new System.Drawing.Point(0, 0);
+                this.axUnityWebPlayer2.Name = "axUnityWebPlayer1";
+                this.axUnityWebPlayer2.OcxState = ocxstate;
+                this.axUnityWebPlayer2.Size = new System.Drawing.Size(915, 685);
+                this.axUnityWebPlayer2.TabIndex = 0;
+                this.axUnityWebPlayer2.ReadyStateChange += new AxUnityWebPlayerAXLib._DUnityWebPlayerAXEvents_ReadyStateChangeEventHandler(this.ReadyStateChange);
+                this.axUnityWebPlayer2.OnExternalCall += new AxUnityWebPlayerAXLib._DUnityWebPlayerAXEvents_OnExternalCallEventHandler(this.OnExternalCall);
+
+                ((System.ComponentModel.ISupportInitialize)(this.axUnityWebPlayer2)).EndInit();
             }
             // 
             // Unity3dControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.axUnityWebPlayer1);
+            this.Controls.Add(this.axUnityWebPlayer2);
             this.Name = "Unity3dControl";
-            this.Size = new System.Drawing.Size(915, 685);
             this.ResumeLayout(false);
 
         }
@@ -80,7 +74,7 @@ namespace VRClient
                 components.Dispose();
             }
             base.Dispose(disposing);
-        }
+            }
 
 
         #endregion 
@@ -90,8 +84,8 @@ namespace VRClient
         {
             //Debug.WriteLine("InitUnity3dControl");
 
-            this.axUnityWebPlayer1.OnExternalCall += this.OnExternalCall;
-            this.axUnityWebPlayer1.ReadyStateChange += this.ReadyStateChange;
+            this.axUnityWebPlayer2.OnExternalCall += this.OnExternalCall;
+            this.axUnityWebPlayer2.ReadyStateChange += this.ReadyStateChange;
         }
 
         const string Prefix = "OnExternalCall(\"";
@@ -120,7 +114,7 @@ namespace VRClient
 
         void Send(string regionmsg)
         {
-            axUnityWebPlayer1.SendMessage("_Message_", "_Message_Json_Recv", regionmsg);
+            axUnityWebPlayer2.SendMessage("_Message_", "_Message_Json_Recv", regionmsg);
         }
         #endregion
 
@@ -145,11 +139,31 @@ namespace VRClient
             ////}
         }
 
+        List<string> mlist = new List<string>();
+
         public void SendMessage(object data)
         {
             string output = EditorMessageDecoder.EncodeMessage(data);
 
-            Send(output);
+            if (output.Length > 10000)
+            {
+                mlist.Clear();
+
+                while(output.Length > 10000)
+                {
+                    string ind = output.Substring(0, 9999);
+                    Send(ind);
+
+                    output = output.Substring(9999);
+
+                }
+
+                if (!string.IsNullOrEmpty(output))
+                    Send(output);
+
+            }
+            else
+                Send(output);
 
             return;
         }

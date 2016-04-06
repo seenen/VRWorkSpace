@@ -95,6 +95,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryGeometryFormat\LibraryGeometryFormat.csproj">
+      <Project>{ba954950-180a-44ba-bc0a-1169382755af}</Project>
+      <Name>LibraryGeometryFormat</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\</PostBuildEvent>
