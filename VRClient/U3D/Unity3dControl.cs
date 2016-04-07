@@ -141,9 +141,13 @@ namespace VRClient
 
         List<string> mlist = new List<string>();
 
-        public void SendMessage(object data)
+        public void SendMessage<T>(T data)
         {
-            string output = EditorMessageDecoder.EncodeMessage(data);
+            //string output = EditorMessageDecoder.EncodeMessage(data);
+            string output = EditorMessageDecoder.EncodeMessageByProtobuf<T>(data);
+
+
+            T t = EditorMessageDecoder.DecodeMessageByProtobuf<T>(output);
 
             if (output.Length > 10000)
             {

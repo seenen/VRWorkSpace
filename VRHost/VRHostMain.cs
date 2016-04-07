@@ -31,8 +31,6 @@ namespace VRHost
 
             Console.WriteLine("VRHostMain " + MapName + " " + MutexName);
 
-            LoadAllData();
-
             //mMemoryMap = new MemoryMap();
 
             //CreateWriteMemory();
@@ -60,25 +58,5 @@ namespace VRHost
             }
         }
 
-        #region OBJFile
-        static int MAX_COUNT = 1;//30;
-
-        //  所有的文件
-        static List<ObjFile> listFiles = new List<ObjFile>();
-
-        static void LoadAllData()
-        {
-            for (int i = 1; i < MAX_COUNT + 1; i++)
-            {
-                string path = "G:/GitHub/VR/Tools/stl2obj/Resources/DataFileObj/" + i.ToString() + ".obj";
-
-                ObjFile of = ObjFile.Load(path);
-
-                listFiles.Add(of);
-            }
-
-        }
-
-        #endregion
     }
 }

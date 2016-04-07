@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryGeometryFormat;
+using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace LibraryGeometryFormat
@@ -14,32 +16,43 @@ namespace LibraryGeometryFormat
 
         public List<Tuple> faceList = new List<Tuple>();
 
+        [NonSerialized]
         internal List<Triangle> innerFaceList = new List<Triangle>();
 
     }
 
     [Serializable]
+    [Flags]
     public enum ObjModelRawState
     {
+        [ProtoMember(1)]
         Null,
 
+        [ProtoMember(2)]
         Create,
 
+        [ProtoMember(3)]
         Update,
 
+        [ProtoMember(4)]
         Destory,
     }
 
     [Serializable]
+    [ProtoContract]
     public class ObjModelRaw
     {
         //  模型id
-        public int id = -1;
+        [ProtoBuf.ProtoMember(1)]
+        public int id { get; set; }
 
         //  模型内容
-        public string content;
+        [ProtoBuf.ProtoMember(2)]
+        public string content { get; set; }
 
         //  状态
-        public ObjModelRawState state = ObjModelRawState.Null;
+        [ProtoMember(3)]
+        public ObjModelRawState state;
+
     }
 }

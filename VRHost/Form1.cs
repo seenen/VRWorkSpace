@@ -1,6 +1,7 @@
 ﻿using LibraryGeometryFormat;
 using LibraryMM;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -69,6 +70,58 @@ namespace VRHost
             ViewList("MMF.WriteObjectToMMF " + str);
         }
 
+        private void WriteBat_Click(object sender, EventArgs e)
+        {
+            LoadAllData();
+
+        }
+
+        #region OBJFile
+        int MAX_COUNT = 30;
+
+        //  所有的文件
+        List<ObjFile> listFiles = new List<ObjFile>();
+
+        int index = 1;
+
+        void LoadAllData()
+        {
+            for (int i = 1; i < MAX_COUNT + 1; i++)
+            {
+                string path = "G:/GitHub/VR/Tools/stl2obj/Resources/DataFileObj/" + i.ToString() + ".obj";
+
+                ObjFile of = ObjFile.Load(path);
+
+                listFiles.Add(of);
+            }
+
+            Timer t1 = new Timer();
+            t1.Interval = 10;
+            t1.Tick += new EventHandler(t1_Tick);//定时器每次触发引起的工作
+
+            t1.Start();//start启用定时器
+        }
+
+        protected void t1_Tick(object sender, EventArgs e)
+        {
+            string path = "G:/GitHub/VR/Tools/stl2obj/Resources/DataFileObj/" + index.ToString() +".obj";
+
+            ObjModelRaw omr = new ObjModelRaw();
+            omr.id = 0;
+            omr.content = File.ReadAllText(path);
+            omr.state = ObjModelRawState.Create;
+
+            MMF.WriteObjectToMMF("t1_Tick", omr);
+
+            ViewList("t1_Tick index: " + index);
+
+            index++;
+
+            if (index == MAX_COUNT) index = 1;
+        }
+
+
+        #endregion
         private void WriteObj_Click(object sender, EventArgs e)
         {
             string path = "G:/GitHub/VR/Tools/stl2obj/Resources/DataFileObj/1.obj";
@@ -99,6 +152,16 @@ namespace VRHost
             ObjModelRaw omr = (ObjModelRaw)MMF.ReadObjectFromMMF("ObjFileRaw");
             string str = JsonFx.Json.JsonWriter.Serialize(omr);
             ViewList("MMF.ReadObjectFromMMF " + str);
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

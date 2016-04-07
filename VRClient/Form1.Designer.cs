@@ -34,6 +34,7 @@
             this.ReadMMF = new System.Windows.Forms.Button();
             this.Read = new System.Windows.Forms.Button();
             this.unity3dControl2 = new VRClient.Unity3dControl();
+            this.threadsendmessage = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,11 +95,22 @@
             this.unity3dControl2.Size = new System.Drawing.Size(760, 396);
             this.unity3dControl2.TabIndex = 4;
             // 
+            // threadsendmessage
+            // 
+            this.threadsendmessage.Location = new System.Drawing.Point(59, 523);
+            this.threadsendmessage.Name = "threadsendmessage";
+            this.threadsendmessage.Size = new System.Drawing.Size(197, 23);
+            this.threadsendmessage.TabIndex = 5;
+            this.threadsendmessage.Text = "线程发送到unity";
+            this.threadsendmessage.UseVisualStyleBackColor = true;
+            this.threadsendmessage.Click += new System.EventHandler(this.threadsendmessage_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 747);
+            this.Controls.Add(this.threadsendmessage);
             this.Controls.Add(this.unity3dControl2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
@@ -117,6 +129,7 @@
         private System.Windows.Forms.Button Read;
         private System.Windows.Forms.Button ReadMMF;
         private Unity3dControl unity3dControl2;
+        private System.Windows.Forms.Button threadsendmessage;
     }
 }
 

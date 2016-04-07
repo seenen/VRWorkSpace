@@ -31,6 +31,7 @@
             this.PersistentWrite = new System.Windows.Forms.Button();
             this.Write = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.WriteObj = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,9 +39,11 @@
             this.Read = new System.Windows.Forms.Button();
             this.writeView = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.MemReadInit = new System.Windows.Forms.Button();
-            this.WriteObj = new System.Windows.Forms.Button();
             this.ReadObj = new System.Windows.Forms.Button();
+            this.MemReadInit = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.WriteBat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -68,8 +71,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.WriteObj);
+            this.groupBox1.Controls.Add(this.WriteBat);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.PersistentRead);
             this.groupBox1.Controls.Add(this.PersistentWrite);
@@ -77,10 +83,20 @@
             this.groupBox1.Controls.Add(this.Write);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 216);
+            this.groupBox1.Size = new System.Drawing.Size(333, 328);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "内存写对象";
+            // 
+            // WriteObj
+            // 
+            this.WriteObj.Location = new System.Drawing.Point(252, 187);
+            this.WriteObj.Name = "WriteObj";
+            this.WriteObj.Size = new System.Drawing.Size(75, 23);
+            this.WriteObj.TabIndex = 4;
+            this.WriteObj.Text = "写一个obj文件";
+            this.WriteObj.UseVisualStyleBackColor = true;
+            this.WriteObj.Click += new System.EventHandler(this.WriteObj_Click);
             // 
             // button1
             // 
@@ -95,16 +111,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 58);
+            this.label2.Location = new System.Drawing.Point(6, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "持久化内存";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 128);
+            this.label1.Location = new System.Drawing.Point(6, 128);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 2;
@@ -143,12 +160,23 @@
             // 
             this.groupBox2.Controls.Add(this.ReadObj);
             this.groupBox2.Controls.Add(this.MemReadInit);
-            this.groupBox2.Location = new System.Drawing.Point(12, 296);
+            this.groupBox2.Location = new System.Drawing.Point(6, 364);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(333, 253);
+            this.groupBox2.Size = new System.Drawing.Size(333, 129);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "内存读对象";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // ReadObj
+            // 
+            this.ReadObj.Location = new System.Drawing.Point(252, 46);
+            this.ReadObj.Name = "ReadObj";
+            this.ReadObj.Size = new System.Drawing.Size(75, 23);
+            this.ReadObj.TabIndex = 1;
+            this.ReadObj.Text = "读一个obj文件";
+            this.ReadObj.UseVisualStyleBackColor = true;
+            this.ReadObj.Click += new System.EventHandler(this.ReadObj_Click);
             // 
             // MemReadInit
             // 
@@ -160,25 +188,33 @@
             this.MemReadInit.UseVisualStyleBackColor = true;
             this.MemReadInit.Click += new System.EventHandler(this.MemWriteInit_Click);
             // 
-            // WriteObj
+            // label3
             // 
-            this.WriteObj.Location = new System.Drawing.Point(252, 187);
-            this.WriteObj.Name = "WriteObj";
-            this.WriteObj.Size = new System.Drawing.Size(75, 23);
-            this.WriteObj.TabIndex = 4;
-            this.WriteObj.Text = "写一个obj文件";
-            this.WriteObj.UseVisualStyleBackColor = true;
-            this.WriteObj.Click += new System.EventHandler(this.WriteObj_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 192);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "持久化内存另一个写法";
             // 
-            // ReadObj
+            // label4
             // 
-            this.ReadObj.Location = new System.Drawing.Point(252, 46);
-            this.ReadObj.Name = "ReadObj";
-            this.ReadObj.Size = new System.Drawing.Size(75, 23);
-            this.ReadObj.TabIndex = 1;
-            this.ReadObj.Text = "读一个obj文件";
-            this.ReadObj.UseVisualStyleBackColor = true;
-            this.ReadObj.Click += new System.EventHandler(this.ReadObj_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 256);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "批量读写";
+            // 
+            // WriteBat
+            // 
+            this.WriteBat.Location = new System.Drawing.Point(137, 251);
+            this.WriteBat.Name = "WriteBat";
+            this.WriteBat.Size = new System.Drawing.Size(75, 23);
+            this.WriteBat.TabIndex = 3;
+            this.WriteBat.Text = "写一批对象";
+            this.WriteBat.UseVisualStyleBackColor = true;
+            this.WriteBat.Click += new System.EventHandler(this.WriteBat_Click);
             // 
             // Form1
             // 
@@ -212,6 +248,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button WriteObj;
         private System.Windows.Forms.Button ReadObj;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button WriteBat;
     }
 }
 
