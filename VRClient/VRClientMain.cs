@@ -36,7 +36,7 @@ namespace VRClient
         static string MapName = "TestMapName";
 
         static string MutexName = "TestMutexName";
-
+ 
         public static ReadOperate coReader;
 
         static void CreateReaderMemory()

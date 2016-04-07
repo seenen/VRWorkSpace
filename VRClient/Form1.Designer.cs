@@ -35,6 +35,7 @@
             this.Read = new System.Windows.Forms.Button();
             this.unity3dControl2 = new VRClient.Unity3dControl();
             this.threadsendmessage = new System.Windows.Forms.Button();
+            this.LoadAllVBO = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@
             // 
             // threadsendmessage
             // 
-            this.threadsendmessage.Location = new System.Drawing.Point(59, 523);
+            this.threadsendmessage.Location = new System.Drawing.Point(68, 591);
             this.threadsendmessage.Name = "threadsendmessage";
             this.threadsendmessage.Size = new System.Drawing.Size(197, 23);
             this.threadsendmessage.TabIndex = 5;
@@ -105,11 +106,22 @@
             this.threadsendmessage.UseVisualStyleBackColor = true;
             this.threadsendmessage.Click += new System.EventHandler(this.threadsendmessage_Click);
             // 
+            // LoadAllVBO
+            // 
+            this.LoadAllVBO.Location = new System.Drawing.Point(68, 513);
+            this.LoadAllVBO.Name = "LoadAllVBO";
+            this.LoadAllVBO.Size = new System.Drawing.Size(197, 23);
+            this.LoadAllVBO.TabIndex = 6;
+            this.LoadAllVBO.Text = "加载所有文件到VBOBuffer";
+            this.LoadAllVBO.UseVisualStyleBackColor = true;
+            this.LoadAllVBO.Click += new System.EventHandler(this.LoadAllVBO_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 747);
+            this.Controls.Add(this.LoadAllVBO);
             this.Controls.Add(this.threadsendmessage);
             this.Controls.Add(this.unity3dControl2);
             this.Controls.Add(this.groupBox2);
@@ -130,6 +142,7 @@
         private System.Windows.Forms.Button ReadMMF;
         private Unity3dControl unity3dControl2;
         private System.Windows.Forms.Button threadsendmessage;
+        private System.Windows.Forms.Button LoadAllVBO;
     }
 }
 

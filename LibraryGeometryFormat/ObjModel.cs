@@ -54,5 +54,22 @@ namespace LibraryGeometryFormat
         [ProtoMember(3)]
         public ObjModelRawState state;
 
+        [ProtoMember(4)]
+        public int t = 0;
+
     }
+
+    ////[Serializable]
+    ////[ProtoContract]
+    ////public class FaceIndices
+    ////{
+    ////    [ProtoBuf.ProtoMember(1)]
+    ////    public int vi;
+
+    ////    [ProtoBuf.ProtoMember(2)]
+    ////    public int vu;
+
+    ////    [ProtoBuf.ProtoMember(3)]
+    ////    public int vn;
+    ////}
 }

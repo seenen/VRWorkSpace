@@ -1,12 +1,18 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 
 namespace LibraryGeometryFormat
 {
     [Serializable]
+    [ProtoContract]
+
     public class _Vector3
     {
+        [ProtoBuf.ProtoMember(1)]
         public float X;
+        [ProtoBuf.ProtoMember(2)]
         public float Y;
+        [ProtoMember(3)]
         public float Z;
 
         public _Vector3()

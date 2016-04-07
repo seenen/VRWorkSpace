@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\VRWorkSpaceForUnity\Assets\Plugins\protobuf-net.dll</HintPath>
     </Reference>
+    <Reference Include="SharpZipLib">
+      <HintPath>..\..\..\MF\Common\Library\SharpZipLib_modify\SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -81,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="U3D\CompressionHelper.cs" />
     <Compile Include="U3D\EditorMessage.cs" />
     <Compile Include="U3D\EditorMessageDecoder.cs" />
     <Compile Include="Form1.cs">
@@ -89,12 +93,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="U3D\FaceIndices.cs" />
+    <Compile Include="U3D\GeometryBuffer.cs" />
+    <Compile Include="U3D\GroupData.cs" />
+    <Compile Include="U3D\ObjectData.cs" />
     <Compile Include="U3D\Unity3dControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="U3D\Unity3dControl.Designer.cs">
       <DependentUpon>Unity3dControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="U3D\VBOBuffer.cs" />
     <Compile Include="VRClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -171,7 +180,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\
-copy $(ProjectDir)U3D\EditorMessage*.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\</PostBuildEvent>
+copy $(ProjectDir)U3D\EditorMessage*.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\
+copy $(ProjectDir)U3D\CompressionHelper.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\
+copy $(ProjectDir)U3D\VBOBuffer.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\
+copy $(ProjectDir)U3D\FaceIndices.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\
+copy $(ProjectDir)U3D\GroupData.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\
+copy $(ProjectDir)U3D\ObjectData.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
