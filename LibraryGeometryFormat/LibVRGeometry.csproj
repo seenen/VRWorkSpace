@@ -7,8 +7,8 @@
     <ProjectGuid>{BA954950-180A-44BA-BC0A-1169382755AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibraryGeometryFormat</RootNamespace>
-    <AssemblyName>LibraryGeometryFormat</AssemblyName>
+    <RootNamespace>LibVRGeometry</RootNamespace>
+    <AssemblyName>LibVRGeometry</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -43,15 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjFile.cs" />
-    <Compile Include="ObjModel.cs" />
-    <Compile Include="PointAttachmentInfo.cs" />
+    <Compile Include="ObjFile\ObjFile.cs" />
+    <Compile Include="ObjFile\ObjModel.cs" />
+    <Compile Include="DataFormat\_PointAttachmentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_Mesh.cs" />
-    <Compile Include="_Triangle.cs" />
-    <Compile Include="_Vector2.cs" />
-    <Compile Include="_Vector3.cs" />
+    <Compile Include="DataFormat\_Mesh.cs" />
+    <Compile Include="DataFormat\_Triangle.cs" />
+    <Compile Include="DataFormat\_Vector2.cs" />
+    <Compile Include="DataFormat\_Vector3.cs" />
+    <Compile Include="VBO\FaceIndices.cs" />
+    <Compile Include="VBO\GroupData.cs" />
+    <Compile Include="VBO\ObjectData.cs" />
+    <Compile Include="VBO\VBOBuffer.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)\Output\

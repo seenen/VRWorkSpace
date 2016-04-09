@@ -1,7 +1,7 @@
 ﻿using ProtoBuf;
 using System;
 
-namespace VRClient
+namespace LibVRGeometry
 {
     [Serializable]
     [ProtoContract]

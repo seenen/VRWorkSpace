@@ -1,4 +1,4 @@
-﻿namespace LibraryGeometryFormat
+﻿namespace LibVRGeometry
 {
     public class _Triangle
     {

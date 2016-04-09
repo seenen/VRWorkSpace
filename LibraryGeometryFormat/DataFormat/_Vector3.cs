@@ -1,7 +1,7 @@
 ﻿using ProtoBuf;
 using System;
 
-namespace LibraryGeometryFormat
+namespace LibVRGeometry
 {
     [Serializable]
     [ProtoContract]

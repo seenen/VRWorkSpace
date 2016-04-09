@@ -1,4 +1,4 @@
-﻿using LibraryGeometryFormat;
+﻿using LibVRGeometry;
 using LibraryMM;
 using System;
 using System.Collections.Generic;
@@ -162,6 +162,11 @@ namespace VRHost
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void PipeStart_Click(object sender, EventArgs e)
+        {
+            Pipe.PipeServer("VRClient.exe");
         }
     }
 }

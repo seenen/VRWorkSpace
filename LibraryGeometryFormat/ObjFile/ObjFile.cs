@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace LibraryGeometryFormat
+namespace LibVRGeometry
 {
     public class ObjFile
     {

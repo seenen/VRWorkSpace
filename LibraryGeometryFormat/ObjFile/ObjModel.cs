@@ -1,9 +1,9 @@
-﻿using LibraryGeometryFormat;
+﻿using LibVRGeometry;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace LibraryGeometryFormat
+namespace LibVRGeometry
 {
     [Serializable]
     public class ObjModel

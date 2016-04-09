@@ -2,24 +2,24 @@
 using System;
 using System.Collections.Generic;
 
-namespace VRClient
+namespace LibVRGeometry
 {
     [Serializable]
     [ProtoContract]
-    public class GroupData
+    public class ObjectData
     {
         [ProtoBuf.ProtoMember(1)]
         public string name;
 
         [ProtoBuf.ProtoMember(2)]
-        public string materialName;
+        public List<GroupData> groups;
 
         [ProtoBuf.ProtoMember(3)]
-        public List<FaceIndices> faces;
-        public GroupData()
+        public List<FaceIndices> allFaces;
+        public ObjectData()
         {
-            faces = new List<FaceIndices>();
+            groups = new List<GroupData>();
+            allFaces = new List<FaceIndices>();
         }
-        public bool isEmpty { get { return faces.Count == 0; } }
     }
 }

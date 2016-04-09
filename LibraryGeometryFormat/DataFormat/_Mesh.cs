@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 
-namespace LibraryGeometryFormat
+namespace LibVRGeometry
 {
 
     public class _Mesh : System.IDisposable
@@ -16,7 +16,7 @@ namespace LibraryGeometryFormat
 
         public List<_Vector3> Vertices = new List<_Vector3>();
         public List<_Triangle> Faces = new List<_Triangle>();
-        public List<PointAttachmentInfo> AdjInfos = new List<PointAttachmentInfo>();
+        public List<_PointAttachmentInfo> AdjInfos = new List<_PointAttachmentInfo>();
 
         bool IsPerVertexVertexInfoEnabled;
         bool IsPerVertexTriangleInfoEnabled;
@@ -54,7 +54,7 @@ namespace LibraryGeometryFormat
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
-                PointAttachmentInfo info = new PointAttachmentInfo();
+                _PointAttachmentInfo info = new _PointAttachmentInfo();
                 AdjInfos.Add(info);
             }
 
@@ -120,7 +120,7 @@ namespace LibraryGeometryFormat
 
             for (int i = 0; i < Vertices.Count; ++i)
             {
-                PointAttachmentInfo info = new PointAttachmentInfo();
+                _PointAttachmentInfo info = new _PointAttachmentInfo();
                 AdjInfos.Add(info);
             }
 

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace LibraryGeometryFormat
+namespace LibVRGeometry
 {
-    public class PointAttachmentInfo : System.IDisposable
+    public class _PointAttachmentInfo : System.IDisposable
     {
 
-        public PointAttachmentInfo()
+        public _PointAttachmentInfo()
         {
             VertexAdjacencyList = null;
             TriangleAdjacencyList = null;
