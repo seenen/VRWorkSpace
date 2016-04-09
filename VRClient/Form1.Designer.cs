@@ -33,19 +33,24 @@
             this.readView = new System.Windows.Forms.ListView();
             this.ReadMMF = new System.Windows.Forms.Button();
             this.Read = new System.Windows.Forms.Button();
-            this.unity3dControl2 = new VRClient.Unity3dControl();
             this.threadsendmessage = new System.Windows.Forms.Button();
             this.LoadAllVBO = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.unity3dControl2 = new VRClient.Unity3dControl();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(59, 43);
+            this.button1.Location = new System.Drawing.Point(11, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(144, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "测试消息发送";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -54,16 +59,16 @@
             this.groupBox2.Controls.Add(this.readView);
             this.groupBox2.Controls.Add(this.ReadMMF);
             this.groupBox2.Controls.Add(this.Read);
-            this.groupBox2.Location = new System.Drawing.Point(460, 470);
+            this.groupBox2.Location = new System.Drawing.Point(12, 565);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(760, 253);
+            this.groupBox2.Size = new System.Drawing.Size(393, 170);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "内存读对象";
             // 
             // readView
             // 
-            this.readView.Location = new System.Drawing.Point(339, 53);
+            this.readView.Location = new System.Drawing.Point(87, 20);
             this.readView.Name = "readView";
             this.readView.Size = new System.Drawing.Size(294, 140);
             this.readView.TabIndex = 2;
@@ -71,7 +76,7 @@
             // 
             // ReadMMF
             // 
-            this.ReadMMF.Location = new System.Drawing.Point(54, 156);
+            this.ReadMMF.Location = new System.Drawing.Point(6, 49);
             this.ReadMMF.Name = "ReadMMF";
             this.ReadMMF.Size = new System.Drawing.Size(75, 23);
             this.ReadMMF.TabIndex = 1;
@@ -81,7 +86,7 @@
             // 
             // Read
             // 
-            this.Read.Location = new System.Drawing.Point(54, 78);
+            this.Read.Location = new System.Drawing.Point(6, 20);
             this.Read.Name = "Read";
             this.Read.Size = new System.Drawing.Size(75, 23);
             this.Read.TabIndex = 1;
@@ -89,46 +94,79 @@
             this.Read.UseVisualStyleBackColor = true;
             this.Read.Click += new System.EventHandler(this.Read_Click);
             // 
-            // unity3dControl2
-            // 
-            this.unity3dControl2.Location = new System.Drawing.Point(348, 43);
-            this.unity3dControl2.Name = "unity3dControl2";
-            this.unity3dControl2.Size = new System.Drawing.Size(760, 396);
-            this.unity3dControl2.TabIndex = 4;
-            // 
             // threadsendmessage
             // 
-            this.threadsendmessage.Location = new System.Drawing.Point(68, 591);
+            this.threadsendmessage.Enabled = false;
+            this.threadsendmessage.Location = new System.Drawing.Point(6, 54);
             this.threadsendmessage.Name = "threadsendmessage";
             this.threadsendmessage.Size = new System.Drawing.Size(197, 23);
             this.threadsendmessage.TabIndex = 5;
-            this.threadsendmessage.Text = "线程发送到unity";
+            this.threadsendmessage.Text = "2、线程发送到unity";
             this.threadsendmessage.UseVisualStyleBackColor = true;
             this.threadsendmessage.Click += new System.EventHandler(this.threadsendmessage_Click);
             // 
             // LoadAllVBO
             // 
-            this.LoadAllVBO.Location = new System.Drawing.Point(68, 513);
+            this.LoadAllVBO.Location = new System.Drawing.Point(6, 20);
             this.LoadAllVBO.Name = "LoadAllVBO";
             this.LoadAllVBO.Size = new System.Drawing.Size(197, 23);
             this.LoadAllVBO.TabIndex = 6;
-            this.LoadAllVBO.Text = "加载所有文件到VBOBuffer";
+            this.LoadAllVBO.Text = "1、加载所有文件到VBOBuffer";
             this.LoadAllVBO.UseVisualStyleBackColor = true;
             this.LoadAllVBO.Click += new System.EventHandler(this.LoadAllVBO_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(324, 55);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "测试1";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.threadsendmessage);
+            this.groupBox3.Controls.Add(this.LoadAllVBO);
+            this.groupBox3.Location = new System.Drawing.Point(12, 73);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(324, 83);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "测试2";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(12, 218);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(324, 109);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "北京联机调试";
+            // 
+            // unity3dControl2
+            // 
+            this.unity3dControl2.Location = new System.Drawing.Point(348, 12);
+            this.unity3dControl2.Name = "unity3dControl2";
+            this.unity3dControl2.Size = new System.Drawing.Size(896, 547);
+            this.unity3dControl2.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1256, 747);
-            this.Controls.Add(this.LoadAllVBO);
-            this.Controls.Add(this.threadsendmessage);
+            this.ClientSize = new System.Drawing.Size(1256, 582);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.unity3dControl2);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "VR系统";
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -143,6 +181,9 @@
         private Unity3dControl unity3dControl2;
         private System.Windows.Forms.Button threadsendmessage;
         private System.Windows.Forms.Button LoadAllVBO;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 

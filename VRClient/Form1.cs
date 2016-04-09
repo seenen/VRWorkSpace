@@ -1,5 +1,6 @@
-﻿using LibVRGeometry;
-using LibraryMM;
+﻿using LibraryMM;
+using LibVRGeometry;
+using LibVRGeometry.Message;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -92,6 +93,8 @@ namespace VRClient
         private void LoadAllVBO_Click(object sender, EventArgs e)
         {
             oAlpha = new Alpha(this.unity3dControl2);
+
+            threadsendmessage.Enabled = true;
         }
     }
 
@@ -131,9 +134,9 @@ namespace VRClient
                 vbo.uvs.AddRange(gb.uvs);
                 vbo.normals.AddRange(gb.normals);
                 vbo.triangles.AddRange(gb.triangles);
-                vbo.state = ObjModelRawState.Create;
+                vbo.state = MessageState.Create;
 
-                string output = EditorMessageDecoder.EncodeMessageByProtobuf<VBOBuffer>(vbo);
+                string output = MessageDecoder.EncodeMessageByProtobuf<VBOBuffer>(vbo);
 
                 listGbs.Add(vbo);
            }
@@ -240,7 +243,7 @@ namespace VRClient
             {
                 VBOBuffer vbo = (VBOBuffer)listGbs[index];
                 vbo.id = 0;
-                vbo.state = ObjModelRawState.Update;
+                vbo.state = MessageState.Update;
 
                 Console.WriteLine("Alpha.Beta is running in its own thread." + vbo.id);
 
@@ -270,7 +273,7 @@ namespace VRClient
                 ObjModelRaw omr = new ObjModelRaw();
                 omr.id = 0;
                 omr.content = listFiles[index];
-                omr.state = ObjModelRawState.Create;
+                omr.state = MessageState.Create;
                 omr.t = System.DateTime.Now.Millisecond;
 
                 float start = System.DateTime.Now.Millisecond;
@@ -289,7 +292,7 @@ namespace VRClient
                 ObjModelRaw omr = new ObjModelRaw();
                 omr.id = 0;
                 omr.content = listFiles[index];
-                omr.state = ObjModelRawState.Update;
+                omr.state = MessageState.Update;
 
                 Console.WriteLine("Alpha.Beta is running in its own thread." + omr.id);
 

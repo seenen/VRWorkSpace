@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.ComponentModel;
+using LibVRGeometry;
 
 namespace VRClient
 {
@@ -100,7 +101,7 @@ namespace VRClient
 
             Console.WriteLine(str);
 
-            object data = EditorMessageDecoder.DecodeMessage(str);
+            object data = MessageDecoder.DecodeMessage(str);
 
             RecvMessage(data);
 
@@ -144,9 +145,9 @@ namespace VRClient
         public void SendMessage<T>(T data)
         {
             //string output = EditorMessageDecoder.EncodeMessage(data);
-            string output = EditorMessageDecoder.EncodeMessageByProtobuf<T>(data);
+            string output = MessageDecoder.EncodeMessageByProtobuf<T>(data);
 
-            T t = EditorMessageDecoder.DecodeMessageByProtobuf<T>(output);
+            T t = MessageDecoder.DecodeMessageByProtobuf<T>(output);
 
             if (output.Length > 10000)
             {

@@ -99,7 +99,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibraryGeometryFormat\LibVRGeometry.csproj">
+    <ProjectReference Include="..\LibVRGeometry\LibVRGeometry.csproj">
       <Project>{ba954950-180a-44ba-bc0a-1169382755af}</Project>
       <Name>LibVRGeometry</Name>
     </ProjectReference>

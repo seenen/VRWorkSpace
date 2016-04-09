@@ -61,9 +61,6 @@
     <Reference Include="JsonFx.Json">
       <HintPath>..\..\VR3rd\JsonFx.Json.dll</HintPath>
     </Reference>
-    <Reference Include="LibraryMM">
-      <HintPath>..\Output\LibraryMM.dll</HintPath>
-    </Reference>
     <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\VRWorkSpaceForUnity\Assets\Plugins\protobuf-net.dll</HintPath>
@@ -84,9 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="U3D\CompressionHelper.cs" />
-    <Compile Include="U3D\EditorMessage.cs" />
-    <Compile Include="U3D\EditorMessageDecoder.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,16 +162,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibraryGeometryFormat\LibVRGeometry.csproj">
+    <ProjectReference Include="..\LibraryMM\LibraryMM.csproj">
+      <Project>{a85562e4-910d-469f-98d8-96c558c3a137}</Project>
+      <Name>LibraryMM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibVRGeometry\LibVRGeometry.csproj">
       <Project>{ba954950-180a-44ba-bc0a-1169382755af}</Project>
       <Name>LibVRGeometry</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\
-copy $(ProjectDir)U3D\EditorMessage*.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\
-copy $(ProjectDir)U3D\CompressionHelper.cs $(SolutionDir)..\VRWorkSpaceForUnity\Assets\UserContorl\</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

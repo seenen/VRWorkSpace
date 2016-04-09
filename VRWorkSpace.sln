@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRWSBoot", "VRWSBoot\VRWSBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMM", "LibraryMM\LibraryMM.csproj", "{A85562E4-910D-469F-98D8-96C558C3A137}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVRGeometry", "LibraryGeometryFormat\LibVRGeometry.csproj", "{BA954950-180A-44BA-BC0A-1169382755AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVRGeometry", "LibVRGeometry\LibVRGeometry.csproj", "{BA954950-180A-44BA-BC0A-1169382755AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
