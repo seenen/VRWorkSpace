@@ -1,8 +1,4 @@
 ﻿using LibVRGeometry.Message;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace LibVRGeometry
 {
@@ -10,6 +6,8 @@ namespace LibVRGeometry
     {
         void OnVBOBuffer(VBOBuffer buffer);
 
-        void EditorMessage(EditorMessage buffer);
+        void OnEditorMessage(EditorMessage buffer);
+
+        void OnVBOBufferSingle(VBOBufferSingle buffer);
     }
 }

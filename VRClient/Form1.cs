@@ -59,35 +59,23 @@ namespace VRClient
         }
         #endregion
 
-        void StartRecvThread()
-        {
-            Thread oThread = new Thread(new ThreadStart(oAlpha.Beta));
-
-            oThread.Start();
-            //while (!oThread.IsAlive)
-            //    Thread.Sleep(1);
-            //oThread.Abort();
-            //oThread.Join();
-            //Console.WriteLine();
-            //Console.WriteLine("Alpha.Beta has finished");
-            //try
-            //{
-            //    Console.WriteLine("Try to restart the Alpha.Beta thread");
-            //    oThread.Start();
-            //}
-            //catch (ThreadStateException)
-            //{
-            //    Console.Write("ThreadStateException trying to restart Alpha.Beta. ");
-            //    Console.WriteLine("Expected since aborted threads cannot be restarted.");
-            //    Console.ReadLine();
-            //}
-        }
-
         private void threadsendmessage_Click(object sender, EventArgs e)
         {
-            StartRecvThread();
+            oThread = new Thread(new ThreadStart(oAlpha.Beta));
+            try
+            {
+                Console.WriteLine("Try to restart the Alpha.Beta thread");
+                oThread.Start();
+            }
+            catch (ThreadStateException)
+            {
+                Console.Write("ThreadStateException trying to restart Alpha.Beta. ");
+                Console.WriteLine("Expected since aborted threads cannot be restarted.");
+                Console.ReadLine();
+            }
         }
 
+        Thread oThread = null;
         Alpha oAlpha = null;
 
         private void LoadAllVBO_Click(object sender, EventArgs e)
@@ -95,6 +83,27 @@ namespace VRClient
             oAlpha = new Alpha(this.unity3dControl2);
 
             threadsendmessage.Enabled = true;
+            DeleteAllVBO.Enabled = true;
+        }
+
+        private void DeleteAllVBO_Click(object sender, EventArgs e)
+        {
+            oThread.Abort();
+            oThread = null;
+
+            oAlpha = null;
+
+            threadsendmessage.Enabled = false;
+            DeleteAllVBO.Enabled = false;
+
+            VBOBuffer vbo = new VBOBuffer();
+            vbo.id = 0;
+            vbo.state = MessageState.Destory;
+
+            unity3dControl2.SendMessage<VBOBuffer>(vbo);
+
+            Console.WriteLine();
+            Console.WriteLine("Alpha.Beta has finished");
         }
     }
 
@@ -114,6 +123,7 @@ namespace VRClient
         //  所有的文件
         List<string> listFiles = new List<string>();
         List<VBOBuffer> listGbs = new List<VBOBuffer>();
+        List<VBOBufferSingle> listGbSs = new List<VBOBufferSingle>();
 
         void LoadAllData()
         {
@@ -125,20 +135,32 @@ namespace VRClient
 
                 listFiles.Add(content);
 
-                GeometryBuffer gb = SetGeometryData(content);
-                gb.PopulateMeshes();
+                GeometryBuffer buffer = SetGeometryData(content);
 
-                VBOBuffer vbo = new VBOBuffer();
-                vbo.objects.AddRange(gb.objects);
-                vbo.vertices.AddRange(gb.vertices);
-                vbo.uvs.AddRange(gb.uvs);
-                vbo.normals.AddRange(gb.normals);
-                vbo.triangles.AddRange(gb.triangles);
+                VBOBufferSingle vbo = new VBOBufferSingle();
+                vbo.vertices.AddRange(buffer.vertices);
+                vbo.uvs.AddRange(buffer.uvs);
+                vbo.normals.AddRange(buffer.normals);
                 vbo.state = MessageState.Create;
 
-                string output = MessageDecoder.EncodeMessageByProtobuf<VBOBuffer>(vbo);
+                vbo.name = buffer.objects[0].name;
+                vbo.faces = buffer.objects[0].allFaces;
+                vbo.materialName = "default";
 
-                listGbs.Add(vbo);
+                listGbSs.Add(vbo);
+
+                //VBOBuffer vbo = new VBOBuffer();
+                //vbo.id = 0;
+                //vbo.objects.AddRange(gb.objects);
+                //vbo.vertices.AddRange(gb.vertices);
+                //vbo.uvs.AddRange(gb.uvs);
+                //vbo.normals.AddRange(gb.normals);
+                ////vbo.triangles.AddRange(gb.triangles);
+                //vbo.state = MessageState.Create;
+
+                //string output = MessageDecoder.EncodeMessageByProtobuf<VBOBuffer>(vbo);
+
+                //listGbs.Add(vbo);
            }
         }
 
@@ -230,18 +252,23 @@ namespace VRClient
             {
                 float start = System.DateTime.Now.Millisecond;
 
-                unity3dControl2.SendMessage<VBOBuffer>((VBOBuffer)listGbs[0]);
+                unity3dControl2.SendMessage<VBOBufferSingle>((VBOBufferSingle)listGbSs[0]);
+                //unity3dControl2.SendMessage<VBOBuffer>((VBOBuffer)listGbs[0]);
 
                 start = (System.DateTime.Now.Millisecond - start);
 
                 Console.WriteLine("SendMessage<ObjModelRaw>." + start / 1000.0f / 1000.0f);
             }
 
-            Thread.Sleep(1000);
+            Thread.Sleep(10);
 
             while (true)
             {
-                VBOBuffer vbo = (VBOBuffer)listGbs[index];
+                //VBOBuffer vbo = (VBOBuffer)listGbs[index];
+                //vbo.id = 0;
+                //vbo.state = MessageState.Update;
+
+                VBOBufferSingle vbo = (VBOBufferSingle)listGbSs[index];
                 vbo.id = 0;
                 vbo.state = MessageState.Update;
 
@@ -255,7 +282,8 @@ namespace VRClient
 
                 float start = System.DateTime.Now.Millisecond;
 
-                unity3dControl2.SendMessage<VBOBuffer>(vbo);
+                unity3dControl2.SendMessage<VBOBufferSingle>(vbo);
+                //unity3dControl2.SendMessage<VBOBuffer>(vbo);
 
 
                 start = (System.DateTime.Now.Millisecond - start);
@@ -263,6 +291,8 @@ namespace VRClient
                 Console.WriteLine("SendMessage<ObjModelRaw>." + start / 1000.0f / 1000.0f);
 
             }
+
+
         }
 
         public void Beta1()

@@ -102,10 +102,13 @@ namespace LibVRGeometry
             using (var ms = new MemoryStream(bytes)) //(声明一个内存流对象)  
             {
                 if (str.Contains(typeof(EditorMessage).ToString()))
-                    callback.EditorMessage(Serializer.Deserialize<EditorMessage>(ms));
+                    callback.OnEditorMessage(Serializer.Deserialize<EditorMessage>(ms));
 
                 else if (str.Contains(typeof(VBOBuffer).ToString()))
                     callback.OnVBOBuffer(Serializer.Deserialize<VBOBuffer>(ms));
+
+                else if (str.Contains(typeof(VBOBufferSingle).ToString()))
+                    callback.OnVBOBufferSingle(Serializer.Deserialize<VBOBufferSingle>(ms));
 
                 else
                     Console.WriteLine("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO...................................");

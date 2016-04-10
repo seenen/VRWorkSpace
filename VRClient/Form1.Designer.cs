@@ -37,6 +37,7 @@
             this.LoadAllVBO = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DeleteAllVBO = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.unity3dControl2 = new VRClient.Unity3dControl();
             this.groupBox2.SuspendLayout();
@@ -97,11 +98,12 @@
             // threadsendmessage
             // 
             this.threadsendmessage.Enabled = false;
-            this.threadsendmessage.Location = new System.Drawing.Point(6, 54);
+            this.threadsendmessage.Location = new System.Drawing.Point(6, 49);
             this.threadsendmessage.Name = "threadsendmessage";
             this.threadsendmessage.Size = new System.Drawing.Size(197, 23);
             this.threadsendmessage.TabIndex = 5;
             this.threadsendmessage.Text = "2、线程发送到unity";
+            this.threadsendmessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.threadsendmessage.UseVisualStyleBackColor = true;
             this.threadsendmessage.Click += new System.EventHandler(this.threadsendmessage_Click);
             // 
@@ -112,6 +114,7 @@
             this.LoadAllVBO.Size = new System.Drawing.Size(197, 23);
             this.LoadAllVBO.TabIndex = 6;
             this.LoadAllVBO.Text = "1、加载所有文件到VBOBuffer";
+            this.LoadAllVBO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoadAllVBO.UseVisualStyleBackColor = true;
             this.LoadAllVBO.Click += new System.EventHandler(this.LoadAllVBO_Click);
             // 
@@ -127,14 +130,27 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.DeleteAllVBO);
             this.groupBox3.Controls.Add(this.threadsendmessage);
             this.groupBox3.Controls.Add(this.LoadAllVBO);
             this.groupBox3.Location = new System.Drawing.Point(12, 73);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(324, 83);
+            this.groupBox3.Size = new System.Drawing.Size(324, 115);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "测试2";
+            // 
+            // DeleteAllVBO
+            // 
+            this.DeleteAllVBO.Enabled = false;
+            this.DeleteAllVBO.Location = new System.Drawing.Point(6, 78);
+            this.DeleteAllVBO.Name = "DeleteAllVBO";
+            this.DeleteAllVBO.Size = new System.Drawing.Size(197, 23);
+            this.DeleteAllVBO.TabIndex = 5;
+            this.DeleteAllVBO.Text = "3、删除对象";
+            this.DeleteAllVBO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DeleteAllVBO.UseVisualStyleBackColor = true;
+            this.DeleteAllVBO.Click += new System.EventHandler(this.DeleteAllVBO_Click);
             // 
             // groupBox4
             // 
@@ -184,6 +200,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button DeleteAllVBO;
     }
 }
 
