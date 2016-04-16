@@ -1,4 +1,6 @@
-﻿using LibraryMM;
+﻿#define DataServer
+
+using LibraryMM;
 using LibVRGeometry;
 using LibVRGeometry.Message;
 using System;
@@ -61,7 +63,11 @@ namespace VRClient
 
         private void threadsendmessage_Click(object sender, EventArgs e)
         {
+#if DataServer
+            oThread = new Thread(new ThreadStart(oDataServer.Beta));
+#else
             oThread = new Thread(new ThreadStart(oAlpha.Beta));
+#endif
             try
             {
                 Console.WriteLine("Try to restart the Alpha.Beta thread");
@@ -75,12 +81,20 @@ namespace VRClient
             }
         }
 
-        Thread oThread = null;
+#if DataServer
+        DataServer oDataServer = null;
+#else
         Alpha oAlpha = null;
+#endif
+        Thread oThread = null;
 
         private void LoadAllVBO_Click(object sender, EventArgs e)
         {
+#if DataServer
+            oDataServer = new DataServer(this.unity3dControl2);
+#else
             oAlpha = new Alpha(this.unity3dControl2);
+#endif
 
             threadsendmessage.Enabled = true;
             DeleteAllVBO.Enabled = true;
@@ -91,7 +105,11 @@ namespace VRClient
             oThread.Abort();
             oThread = null;
 
+#if DataServer
+            oDataServer = null;
+#else
             oAlpha = null;
+#endif
 
             threadsendmessage.Enabled = false;
             DeleteAllVBO.Enabled = false;
@@ -164,7 +182,7 @@ namespace VRClient
            }
         }
 
-        #region obj的解析过程
+#region obj的解析过程
         /* OBJ file tags */
         private const string O = "o";
         private const string G = "g";
@@ -244,7 +262,7 @@ namespace VRClient
             return Convert.ToInt32(v.Trim(), new CultureInfo("en-US"));
         }
 
-        #endregion
+#endregion
         public void Beta()
         {
             int index = 0;
@@ -254,6 +272,7 @@ namespace VRClient
 
                 unity3dControl2.SendMessage<VBOBufferSingle>((VBOBufferSingle)listGbSs[0]);
                 //unity3dControl2.SendMessage<VBOBuffer>((VBOBuffer)listGbs[0]);
+                VBOBufferSingleFile.Output(listGbSs[0], "G:/GitHub/VRWorkSpaceForUnity/Assets/Test_vboBufferSingle.obj");
 
                 start = (System.DateTime.Now.Millisecond - start);
 
@@ -262,35 +281,31 @@ namespace VRClient
 
             Thread.Sleep(10);
 
-            while (true)
-            {
-                //VBOBuffer vbo = (VBOBuffer)listGbs[index];
-                //vbo.id = 0;
-                //vbo.state = MessageState.Update;
+            //while (true)
+            //{
+            //    VBOBufferSingle vbo = (VBOBufferSingle)listGbSs[index];
+            //    vbo.id = 0;
+            //    vbo.state = MessageState.Update;
 
-                VBOBufferSingle vbo = (VBOBufferSingle)listGbSs[index];
-                vbo.id = 0;
-                vbo.state = MessageState.Update;
+            //    Console.WriteLine("Alpha.Beta is running in its own thread." + vbo.id);
 
-                Console.WriteLine("Alpha.Beta is running in its own thread." + vbo.id);
+            //    Thread.Sleep(33);
 
-                Thread.Sleep(33);
+            //    index++;
 
-                index++;
+            //    if (index == MAX_COUNT) index = 0;
 
-                if (index == MAX_COUNT) index = 0;
+            //    float start = System.DateTime.Now.Millisecond;
 
-                float start = System.DateTime.Now.Millisecond;
-
-                unity3dControl2.SendMessage<VBOBufferSingle>(vbo);
-                //unity3dControl2.SendMessage<VBOBuffer>(vbo);
+            //    unity3dControl2.SendMessage<VBOBufferSingle>(vbo);
+            //    //unity3dControl2.SendMessage<VBOBuffer>(vbo);
 
 
-                start = (System.DateTime.Now.Millisecond - start);
+            //    start = (System.DateTime.Now.Millisecond - start);
 
-                Console.WriteLine("SendMessage<ObjModelRaw>." + start / 1000.0f / 1000.0f);
+            //    Console.WriteLine("SendMessage<ObjModelRaw>." + start / 1000.0f / 1000.0f);
 
-            }
+            //}
 
 
         }

@@ -1,0 +1,16 @@
+内存操作
+API：	写内存	MMF.WriteObjectToMMF(string mmfFile, object objectData) 	
+		读内存	MMF.ReadObjectFromMMF(string mmfFile)
+
+
+例如
+定义一个内存名 TestMM
+一个Class类
+Class A
+{
+	A(){}
+}
+
+A a;
+        写内存	MMF.ReadObjectFromMMF(a, "TestMM")		
+        读内存  A a = (A)MMF.ReadObjectFromMMF("TestMM");

@@ -23,7 +23,7 @@ namespace VRClient
 
         private void InitializeComponent()
         {
-            string unitysrc = System.Environment.CurrentDirectory + "\\UserControl\\UserControl.unity3d";
+            string unitysrc = System.Environment.CurrentDirectory + "/VREditor/VREditor.unity3d";
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Unity3dControl));
             this.SuspendLayout();
             {

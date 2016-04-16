@@ -58,5 +58,11 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoBuf.ProtoMember(8)]
         public List<FaceIndices> faces = new List<FaceIndices>();
+
+        /// <summary>
+        /// 三角面相关索引数据集合
+        /// </summary>
+        [ProtoBuf.ProtoMember(9)]
+        public VBOType vboType = VBOType.Null;
     }
 }
