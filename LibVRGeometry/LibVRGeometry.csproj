@@ -61,6 +61,7 @@
     <Compile Include="DataBase\ObjFile.cs" />
     <Compile Include="Message\MessageState.cs" />
     <Compile Include="DataBase\_PointAttachmentInfo.cs" />
+    <Compile Include="Message\VBOBufferBoxCollider.cs" />
     <Compile Include="Message\VBOBufferSingle.cs" />
     <Compile Include="Message\VBOType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
