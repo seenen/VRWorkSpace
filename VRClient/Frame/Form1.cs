@@ -17,6 +17,17 @@ namespace VRClient
         public Form1()
         {
             InitializeComponent();
+
+            CreateMenu();
+
+            this.Shown += Form1_Shown;
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            LoginForm qform = new LoginForm();
+            qform.Owner = this;      //假设当前窗口是新窗口的拥有者
+            qform.ShowDialog(this);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

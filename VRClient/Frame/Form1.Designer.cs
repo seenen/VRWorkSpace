@@ -39,10 +39,13 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.DeleteAllVBO = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unity3dControl2 = new VRClient.Unity3dControl();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -60,7 +63,7 @@
             this.groupBox2.Controls.Add(this.readView);
             this.groupBox2.Controls.Add(this.ReadMMF);
             this.groupBox2.Controls.Add(this.Read);
-            this.groupBox2.Location = new System.Drawing.Point(12, 565);
+            this.groupBox2.Location = new System.Drawing.Point(12, 635);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(393, 170);
             this.groupBox2.TabIndex = 3;
@@ -121,7 +124,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 82);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 55);
             this.groupBox1.TabIndex = 7;
@@ -133,7 +136,7 @@
             this.groupBox3.Controls.Add(this.DeleteAllVBO);
             this.groupBox3.Controls.Add(this.threadsendmessage);
             this.groupBox3.Controls.Add(this.LoadAllVBO);
-            this.groupBox3.Location = new System.Drawing.Point(12, 73);
+            this.groupBox3.Location = new System.Drawing.Point(12, 143);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(324, 115);
             this.groupBox3.TabIndex = 8;
@@ -154,16 +157,34 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Location = new System.Drawing.Point(12, 218);
+            this.groupBox4.Location = new System.Drawing.Point(12, 288);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(324, 109);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "北京联机调试";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.退出ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(4, 28);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1441, 25);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.ToolTipText = "Quit";
+            // 
             // unity3dControl2
             // 
-            this.unity3dControl2.Location = new System.Drawing.Point(348, 12);
+            this.unity3dControl2.Location = new System.Drawing.Point(348, 82);
             this.unity3dControl2.Name = "unity3dControl2";
             this.unity3dControl2.Size = new System.Drawing.Size(896, 547);
             this.unity3dControl2.TabIndex = 4;
@@ -172,18 +193,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1256, 582);
+            this.ClientSize = new System.Drawing.Size(1449, 750);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.unity3dControl2);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "VR系统";
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,6 +227,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button DeleteAllVBO;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
     }
 }
 

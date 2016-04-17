@@ -40,11 +40,11 @@ namespace VRClient
                 vbo.materialName = "default";
                 vbo.state = MessageState.Create;
                 vbo.vboType = VBOType.DOT_OBJ;
-                //for (int i = 0; i < vbo.faces.Count; ++i)
-                //{
-                //    FaceIndices face = vbo.faces[i];
-                //    face.vi += 1;
-                //}
+                for (int i = 0; i < vbo.faces.Count; ++i)
+                {
+                    FaceIndices face = vbo.faces[i];
+                    face.vi += 1;
+                }
                 unity3dControl2.SendMessage<VBOBufferSingle>(vbo);
 
                 VBOBufferSingleFile.Output(vbo, "G:/GitHub/VRWorkSpaceForUnity/Assets/DataServer_vboBufferSingle.obj");
@@ -58,8 +58,16 @@ namespace VRClient
             while (true)
             {
                 VBOBufferSingleCreator.GetDataAndCalc(vbo);
+                vbo.id = 0;
                 vbo.state = MessageState.Update;
-
+                vbo.vboType = VBOType.DOT_OBJ;
+                vbo.name = "default";
+                vbo.materialName = "default";
+                for (int i = 0; i < vbo.faces.Count; ++i)
+                {
+                    FaceIndices face = vbo.faces[i];
+                    face.vi += 1;
+                }
                 Console.WriteLine("DataServer.Beta is running in its own thread." + vbo.id);
 
                 Thread.Sleep(20);

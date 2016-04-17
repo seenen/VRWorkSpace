@@ -58,6 +58,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSkin, Version=16.1.14.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\VR3rd\CSkin 4.0\CSkin.dll</HintPath>
+    </Reference>
     <Reference Include="DataServer, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DataTester\DataServer\x86\DataServer.dll</HintPath>
@@ -85,14 +89,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataServer.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Data\DataServer.cs" />
+    <Compile Include="Frame\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Frame\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="U3D\GeometryBuffer.cs" />
+    <Compile Include="Frame\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frame\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frame\Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data\GeometryBuffer.cs" />
     <Compile Include="U3D\Unity3dControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -101,8 +114,11 @@
     </Compile>
     <Compile Include="VRClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Frame\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frame\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,6 +192,7 @@
       <Name>LibVRGeometry</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\</PostBuildEvent>
