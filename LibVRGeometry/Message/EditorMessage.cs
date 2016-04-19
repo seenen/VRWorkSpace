@@ -2,6 +2,9 @@
 
 namespace LibVRGeometry.Message
 {
+    /// <summary>
+    /// 编辑器信息
+    /// </summary>
     [ProtoContract]
     public class EditorMessage
     {
@@ -11,7 +14,7 @@ namespace LibVRGeometry.Message
         [ProtoMember(2)]
         public string name = string.Empty;
 
-        [ProtoBuf.ProtoMember(3)]
+        [ProtoMember(3)]
         public string age = "0";
     }
 }

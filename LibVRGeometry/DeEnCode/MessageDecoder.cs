@@ -101,14 +101,25 @@ namespace LibVRGeometry
 
             using (var ms = new MemoryStream(bytes)) //(声明一个内存流对象)  
             {
-                if (str.Contains(typeof(EditorMessage).ToString()))
-                    callback.OnEditorMessage(Serializer.Deserialize<EditorMessage>(ms));
-
-                else if (str.Contains(typeof(VBOBuffer).ToString()))
+                #region 变形
+                if (str.Contains(typeof(VBOBuffer).ToString()))
                     callback.OnVBOBuffer(Serializer.Deserialize<VBOBuffer>(ms));
 
                 else if (str.Contains(typeof(VBOBufferSingle).ToString()))
                     callback.OnVBOBufferSingle(Serializer.Deserialize<VBOBufferSingle>(ms));
+                #endregion 变形
+
+                #region 场景和单位
+                else if (str.Contains(typeof(EditorMessage).ToString()))
+                    callback.OnEditorMessage(Serializer.Deserialize<EditorMessage>(ms));
+
+                else if (str.Contains(typeof(MDTitaniumClamp).ToString()))
+                    callback.OnMDTitaniumClamp(Serializer.Deserialize<MDTitaniumClamp>(ms));
+
+                else if (str.Contains(typeof(SceneMessage).ToString()))
+                    callback.OnSceneMessage(Serializer.Deserialize<SceneMessage>(ms));
+
+                #endregion 场景和单位
 
                 else
                     Console.WriteLine("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO...................................");
