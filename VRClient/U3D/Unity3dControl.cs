@@ -101,11 +101,13 @@ namespace VRClient
 
             Console.WriteLine(str);
 
-            object data = MessageDecoder.DecodeMessage(str);
+            MessageDecoder.DecodeMessageWithHeader(str, mMessageInstance);
 
-            RecvMessage(data);
+            //object data = MessageDecoder.DecodeMessage(str);
 
-            Response(data);
+            //RecvMessage(data);
+
+            //Response(data);
         }
 
         private void ReadyStateChange(object sender, _DUnityWebPlayerAXEvents_ReadyStateChangeEvent e)
@@ -172,8 +174,10 @@ namespace VRClient
             return;
         }
 
+        MessageInstance mMessageInstance = new MessageInstance();
         public void RecvMessage(object data)
         {
+            
             ////if (data is RspOnObjectSelected)
             ////{
             ////    RspOnObjectSelected rsp = data as RspOnObjectSelected;

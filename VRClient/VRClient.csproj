@@ -113,6 +113,7 @@
     <Compile Include="Frame\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="U3D\MessageInstance.cs" />
     <Compile Include="U3D\Unity3dControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

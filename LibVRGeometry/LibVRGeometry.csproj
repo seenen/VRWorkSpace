@@ -58,6 +58,8 @@
     <Compile Include="Geometry\ObjModel.cs" />
     <Compile Include="Geometry\ObjModelRaw.cs" />
     <Compile Include="DataBase\ObjFile.cs" />
+    <Compile Include="Message\InteractiveMessage.cs" />
+    <Compile Include="Message\MDScissors.cs" />
     <Compile Include="Message\MDTitaniumClamp.cs" />
     <Compile Include="Message\UnitMessage.cs" />
     <Compile Include="Message\MessageState.cs" />

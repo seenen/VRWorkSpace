@@ -5,9 +5,9 @@ using LibVRGeometry.Message;
 
 namespace LibVRGeometry
 {
-    #region Json序列化和反序列化
     public class MessageDecoder
     {
+        #region Json序列化和反序列化
         public static object DecodeMessage(string text)
         {
             object obj = JsonFx.Json.JsonReader.Deserialize(text);
@@ -121,6 +121,11 @@ namespace LibVRGeometry
 
                 #endregion 场景和单位
 
+                #region U3D发到Winform
+
+                else if (str.Contains(typeof(MD2HO).ToString()))
+                    callback.OnMD2HO(Serializer.Deserialize<MD2HO>(ms));
+                #endregion
                 else
                     Console.WriteLine("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO...................................");
             }

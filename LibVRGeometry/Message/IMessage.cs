@@ -20,5 +20,9 @@ namespace LibVRGeometry
 
         void OnSceneMessage(SceneMessage o);
         #endregion 场景和单位
+
+        #region U3D发到Winform
+        void OnMD2HO(MD2HO o);
+        #endregion
     }
 }
