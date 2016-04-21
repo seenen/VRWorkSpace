@@ -6,7 +6,12 @@ namespace VRClient
 {
     public class MessageInstance : IMessage
     {
-        public void OnMD2HO(MD2HO o)
+        public void OnMD2HO(IM_MD2HO o)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnMDScissors(UM_MDScissors o)
         {
             throw new NotImplementedException();
         }
@@ -16,7 +21,7 @@ namespace VRClient
             throw new NotImplementedException();
         }
 
-        void IMessage.OnMDTitaniumClamp(MDTitaniumClamp o)
+        void IMessage.OnMDTitaniumClamp(UM_MDTitaniumClamp o)
         {
             throw new NotImplementedException();
         }

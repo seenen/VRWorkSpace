@@ -102,19 +102,23 @@ namespace LibVRGeometry
             using (var ms = new MemoryStream(bytes)) //(声明一个内存流对象)  
             {
                 #region 变形
-                if (str.Contains(typeof(VBOBuffer).ToString()))
+                if (str.Contains(typeof(VBOBufferSingle).ToString()))
+                    callback.OnVBOBufferSingle(Serializer.Deserialize<VBOBufferSingle>(ms));
+
+                else if (str.Contains(typeof(VBOBuffer).ToString()))
                     callback.OnVBOBuffer(Serializer.Deserialize<VBOBuffer>(ms));
 
-                else if (str.Contains(typeof(VBOBufferSingle).ToString()))
-                    callback.OnVBOBufferSingle(Serializer.Deserialize<VBOBufferSingle>(ms));
                 #endregion 变形
 
                 #region 场景和单位
                 else if (str.Contains(typeof(EditorMessage).ToString()))
                     callback.OnEditorMessage(Serializer.Deserialize<EditorMessage>(ms));
 
-                else if (str.Contains(typeof(MDTitaniumClamp).ToString()))
-                    callback.OnMDTitaniumClamp(Serializer.Deserialize<MDTitaniumClamp>(ms));
+                else if (str.Contains(typeof(UM_MDTitaniumClamp).ToString()))
+                    callback.OnMDTitaniumClamp(Serializer.Deserialize<UM_MDTitaniumClamp>(ms));
+
+                else if (str.Contains(typeof(UM_MDScissors).ToString()))
+                    callback.OnMDScissors(Serializer.Deserialize<UM_MDScissors>(ms));
 
                 else if (str.Contains(typeof(SceneMessage).ToString()))
                     callback.OnSceneMessage(Serializer.Deserialize<SceneMessage>(ms));
@@ -123,8 +127,8 @@ namespace LibVRGeometry
 
                 #region U3D发到Winform
 
-                else if (str.Contains(typeof(MD2HO).ToString()))
-                    callback.OnMD2HO(Serializer.Deserialize<MD2HO>(ms));
+                else if (str.Contains(typeof(IM_MD2HO).ToString()))
+                    callback.OnMD2HO(Serializer.Deserialize<IM_MD2HO>(ms));
                 #endregion
                 else
                     Console.WriteLine("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO...................................");

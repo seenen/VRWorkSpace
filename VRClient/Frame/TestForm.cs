@@ -135,7 +135,7 @@ namespace VRClient
 
             VBOBufferSingle vbo = new VBOBufferSingle();
             vbo.id = 0;
-            vbo.state = MessageState.Destory;
+            vbo.state = VBOState.Destory;
             vbo.vboType = VBOType.DOT_OBJ;
 
             unity3dControl2.SendMessage<VBOBufferSingle>(vbo);
@@ -179,7 +179,7 @@ namespace VRClient
                 vbo.vertices.AddRange(buffer.vertices);
                 vbo.uvs.AddRange(buffer.uvs);
                 vbo.normals.AddRange(buffer.normals);
-                vbo.state = MessageState.Create;
+                vbo.state = VBOState.Create;
 
                 vbo.name = buffer.objects[0].name;
                 vbo.faces = buffer.objects[0].allFaces;
@@ -338,7 +338,7 @@ namespace VRClient
                 ObjModelRaw omr = new ObjModelRaw();
                 omr.id = 0;
                 omr.content = listFiles[index];
-                omr.state = MessageState.Create;
+                omr.state = VBOState.Create;
                 omr.t = System.DateTime.Now.Millisecond;
 
                 float start = System.DateTime.Now.Millisecond;
@@ -357,7 +357,7 @@ namespace VRClient
                 ObjModelRaw omr = new ObjModelRaw();
                 omr.id = 0;
                 omr.content = listFiles[index];
-                omr.state = MessageState.Update;
+                omr.state = VBOState.Update;
 
                 Console.WriteLine("Alpha.Beta is running in its own thread." + omr.id);
 

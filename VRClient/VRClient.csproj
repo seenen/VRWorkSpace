@@ -91,6 +91,12 @@
   <ItemGroup>
     <Compile Include="Data\DataServer.cs" />
     <Compile Include="Data\Interactive.cs" />
+    <Compile Include="Frame\CFG_MDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frame\CFG_MDForm.Designer.cs">
+      <DependentUpon>CFG_MDForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frame\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <Compile Include="VRClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frame\CFG_MDForm.resx">
+      <DependentUpon>CFG_MDForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frame\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -22,12 +22,12 @@ namespace LibVRGeometry
         /// 模型刷新的状态
         /// </summary>
         [ProtoMember(2)]
-        public MessageState state;
+        public VBOState state;
 
         /// <summary>
         /// 顶点的数目   即 obj的 所有 v 的集合
         /// </summary>
-        [ProtoBuf.ProtoMember(3)]
+        [ProtoMember(3)]
         public List<_Vector3> vertices = new List<_Vector3>();
 
         /// <summary>

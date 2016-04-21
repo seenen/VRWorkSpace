@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace LibVRGeometry.Message
+namespace LibVRGeometry
 {
     /// <summary>
     /// 单位信息.
@@ -13,5 +13,17 @@ namespace LibVRGeometry.Message
         /// </summary>
         [ProtoMember(1)]
         public int id;
+
+        /// <summary>
+        /// 设备的移动速度 米/秒
+        /// </summary>
+        [ProtoMember(2)]
+        public float move_speed;
+
+        /// <summary>
+        /// ID
+        /// </summary>
+        [ProtoMember(3)]
+        public float rotate_speed;
     }
 }

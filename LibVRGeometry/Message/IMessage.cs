@@ -16,13 +16,15 @@ namespace LibVRGeometry
         #region 场景和单位
         void OnEditorMessage(EditorMessage buffer);
 
-        void OnMDTitaniumClamp(MDTitaniumClamp o);
+        void OnMDTitaniumClamp(UM_MDTitaniumClamp o);
+
+        void OnMDScissors(UM_MDScissors o);
 
         void OnSceneMessage(SceneMessage o);
         #endregion 场景和单位
 
         #region U3D发到Winform
-        void OnMD2HO(MD2HO o);
+        void OnMD2HO(IM_MD2HO o);
         #endregion
     }
 }

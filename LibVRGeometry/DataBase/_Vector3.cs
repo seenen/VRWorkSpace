@@ -8,9 +8,9 @@ namespace LibVRGeometry
 
     public class _Vector3
     {
-        [ProtoBuf.ProtoMember(1)]
+        [ProtoMember(1)]
         public float X;
-        [ProtoBuf.ProtoMember(2)]
+        [ProtoMember(2)]
         public float Y;
         [ProtoMember(3)]
         public float Z;

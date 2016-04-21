@@ -109,7 +109,7 @@ namespace VRHost
             ObjModelRaw omr = new ObjModelRaw();
             omr.id = 0;
             omr.content = File.ReadAllText(path);
-            omr.state = MessageState.Create;
+            omr.state = VBOState.Create;
 
             MMF.WriteObjectToMMF("t1_Tick", omr);
 
@@ -129,7 +129,7 @@ namespace VRHost
             ObjModelRaw omr = new ObjModelRaw();
             omr.id = 0;
             omr.content = File.ReadAllText(path);
-            omr.state = MessageState.Create;
+            omr.state = VBOState.Create;
 
             MMF.WriteObjectToMMF("ObjFileRaw", omr);
 

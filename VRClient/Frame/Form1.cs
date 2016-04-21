@@ -105,7 +105,7 @@ namespace VRClient
 
             VBOBufferSingle vbo = new VBOBufferSingle();
             vbo.id = 0;
-            vbo.state = MessageState.Destory;
+            vbo.state = VBOState.Destory;
             vbo.vboType = VBOType.DOT_OBJ;
 
             unity3dControl2.SendMessage<VBOBufferSingle>(vbo);
@@ -123,14 +123,119 @@ namespace VRClient
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+            InitScene();
+
+            InitHall();
+
+            InitTitaniumClamp();
+
+            InitScissors();
+
+            ((Button)sender).Enabled = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Deformation();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void InitScene()
+        {
             SceneMessage sm = new SceneMessage();
             sm.scene_name = "这是一个场景";
 
             this.unity3dControl2.SendMessage<SceneMessage>(sm);
+        }
 
-            ((Button)sender).Enabled = false;
+        /// <summary>
+        /// 初始化一个胆囊
+        /// </summary>
+        void InitHall()
+        {
+#if DataServer
+            oDataServer = new DataServer(this.unity3dControl2);
+            oThread = new Thread(new ThreadStart(oDataServer.Beta));
+#else
+            oAlpha = new Alpha(this.unity3dControl2);
+            oThread = new Thread(new ThreadStart(oAlpha.Beta));
+#endif
+        }
+
+        /// <summary>
+        /// 初始化钛夹
+        /// </summary>
+        UM_MDTitaniumClamp tc = new UM_MDTitaniumClamp();
+        void InitTitaniumClamp()
+        {
+            tc.id = 0;
+            tc.move_speed = 5;
+            tc.rotate_speed = 5;
+            tc.open_degree = 10;
+            tc.merge_speed = 1;
+
+            this.unity3dControl2.SendMessage<UM_MDTitaniumClamp>(tc);
+        }
+
+        /// <summary>
+        /// 初始化剪
+        /// </summary>
+        UM_MDScissors s = new UM_MDScissors();
+        void InitScissors()
+        {
+            s.id = 1;
+            s.move_speed = 5;
+            s.rotate_speed = 5;
+            s.open_degree = 10;
+            tc.merge_speed = 1;
+
+            this.unity3dControl2.SendMessage<UM_MDScissors>(s);
 
         }
-#endregion
+
+        void Deformation()
+        {
+            oThread.Start();
+        }
+
+        /// <summary>
+        /// 配置钛夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CFG_MDForm cfgform = new CFG_MDForm();
+            cfgform.InitTitaniumClamp(ref tc);
+            cfgform.Owner = this;
+            cfgform.ShowDialog(this);
+        }
+
+        public void UpdateTitaniumClamp()
+        {
+            this.unity3dControl2.SendMessage<UM_MDTitaniumClamp>(tc);
+        }
+
+        /// <summary>
+        /// 配置剪子
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CFG_MDForm cfgform = new CFG_MDForm();
+            cfgform.InitScissors(ref s);
+            cfgform.Owner = this;
+            cfgform.ShowDialog(this);
+
+        }
+
+        public void UpdateScissors()
+        {
+            this.unity3dControl2.SendMessage<UM_MDScissors>(s);
+        }
+        #endregion
     }
 }
