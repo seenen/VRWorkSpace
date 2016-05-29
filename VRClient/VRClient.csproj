@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,10 +26,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,10 +62,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\VR3rd\CSkin 4.0\CSkin.dll</HintPath>
     </Reference>
-    <Reference Include="DataServer, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DataTester\DataServer\x86\DataServer.dll</HintPath>
-    </Reference>
     <Reference Include="JsonFx.Json">
       <HintPath>..\..\VR3rd\JsonFx.Json.dll</HintPath>
     </Reference>
@@ -91,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Data\DataServer.cs" />
     <Compile Include="Data\Interactive.cs" />
+    <Compile Include="Data\Server.cs" />
     <Compile Include="Frame\CFG_MDForm.cs">
       <SubType>Form</SubType>
     </Compile>

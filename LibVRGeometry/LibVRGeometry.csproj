@@ -50,24 +50,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeEnCode\CompressionHelper.cs" />
-    <Compile Include="DeEnCode\MessageDecoder.cs" />
-    <Compile Include="File\VBOBufferSingleFile.cs" />
+    <Compile Include="Message\CompressionHelper.cs" />
+    <Compile Include="Message\MessageDecoder.cs" />
+    <Compile Include="Geometry\VBOBufferSingleFile.cs" />
     <Compile Include="Message\EditorMessage.cs" />
     <Compile Include="Message\IMessage.cs" />
     <Compile Include="Geometry\ObjModel.cs" />
     <Compile Include="Geometry\ObjModelRaw.cs" />
     <Compile Include="DataBase\ObjFile.cs" />
-    <Compile Include="MD\InteractiveMessage.cs" />
-    <Compile Include="MD\MDMessage.cs" />
-    <Compile Include="MD\MDScissors.cs" />
-    <Compile Include="MD\MDTitaniumClamp.cs" />
-    <Compile Include="MD\MDType.cs" />
+    <Compile Include="HardDevices\InteractiveMessage.cs" />
+    <Compile Include="HardDevices\HDMessage.cs" />
+    <Compile Include="HardDevices\HDScissorsMessage.cs" />
+    <Compile Include="HardDevices\HDTitaniumClampMessage.cs" />
+    <Compile Include="HardDevices\HDType.cs" />
     <Compile Include="Message\UnitMessage.cs" />
     <Compile Include="Geometry\VBOState.cs" />
     <Compile Include="DataBase\_PointAttachmentInfo.cs" />
     <Compile Include="Geometry\VBOBufferSingle.cs" />
     <Compile Include="Geometry\VBOType.cs" />
+    <Compile Include="Message\UnitMessageState.cs" />
     <Compile Include="Scene\SceneMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataBase\_Mesh.cs" />

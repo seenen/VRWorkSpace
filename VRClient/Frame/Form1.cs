@@ -25,9 +25,9 @@ namespace VRClient
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            LoginForm qform = new LoginForm();
-            qform.Owner = this;      //假设当前窗口是新窗口的拥有者
-            qform.ShowDialog(this);
+            //LoginForm qform = new LoginForm();
+            //qform.Owner = this;      //假设当前窗口是新窗口的拥有者
+            //qform.ShowDialog(this);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -127,10 +127,6 @@ namespace VRClient
 
             InitHall();
 
-            InitTitaniumClamp();
-
-            InitScissors();
-
             ((Button)sender).Enabled = false;
         }
 
@@ -167,31 +163,35 @@ namespace VRClient
         /// <summary>
         /// 初始化钛夹
         /// </summary>
-        UM_MDTitaniumClamp tc = new UM_MDTitaniumClamp();
+        HDTitaniumClampMessage tc = new HDTitaniumClampMessage();
         void InitTitaniumClamp()
         {
             tc.id = 0;
-            tc.move_speed = 5;
-            tc.rotate_speed = 5;
-            tc.open_degree = 10;
-            tc.merge_speed = 1;
+            tc.state = UnitMessageState.Create;
+            tc.type = HDType.TitaniumClamp;
+            tc.move_speed = 0.2f;
+            tc.rotate_speed = 30;
+            tc.merge_degree = 10;
+            tc.merge_speed = 6;
 
-            this.unity3dControl2.SendMessage<UM_MDTitaniumClamp>(tc);
+            this.unity3dControl2.SendMessage<HDTitaniumClampMessage>(tc);
         }
 
         /// <summary>
         /// 初始化剪
         /// </summary>
-        UM_MDScissors s = new UM_MDScissors();
+        HDScissorsMessage s = new HDScissorsMessage();
         void InitScissors()
         {
             s.id = 1;
-            s.move_speed = 5;
-            s.rotate_speed = 5;
-            s.open_degree = 10;
-            tc.merge_speed = 1;
+            s.state = UnitMessageState.Create;
+            s.type = HDType.Scissors;
+            s.move_speed = 0.2f;
+            s.rotate_speed = 30;
+            s.merge_degree = 10;
+            s.merge_speed = 6;
 
-            this.unity3dControl2.SendMessage<UM_MDScissors>(s);
+            this.unity3dControl2.SendMessage<HDScissorsMessage>(s);
 
         }
 
@@ -213,9 +213,14 @@ namespace VRClient
             cfgform.ShowDialog(this);
         }
 
-        public void UpdateTitaniumClamp()
+        MessageInstance mMessageInstance = new MessageInstance();
+
+        public void UpdateTitaniumClamp(HDTitaniumClampMessage t)
         {
-            this.unity3dControl2.SendMessage<UM_MDTitaniumClamp>(tc);
+            tc = t;
+            tc.state = UnitMessageState.Modify;
+            this.unity3dControl2.SendMessage<HDTitaniumClampMessage>(tc);
+
         }
 
         /// <summary>
@@ -232,10 +237,30 @@ namespace VRClient
 
         }
 
-        public void UpdateScissors()
+        public void UpdateScissors(HDScissorsMessage _s)
         {
-            this.unity3dControl2.SendMessage<UM_MDScissors>(s);
+            s = _s;
+            s.state = UnitMessageState.Modify;
+            this.unity3dControl2.SendMessage<HDScissorsMessage>(s);
         }
         #endregion
+
+        /// <summary>
+        /// 加载器材
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            InitTitaniumClamp();
+
+            InitScissors();
+
+            ((Button)sender).Enabled = false;
+
+            ((Button)button4).Enabled = true;
+            ((Button)button5).Enabled = true;
+        }
     }
 }

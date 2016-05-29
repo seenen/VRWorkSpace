@@ -11,7 +11,7 @@ namespace VRClient
             throw new NotImplementedException();
         }
 
-        public void OnMDScissors(UM_MDScissors o)
+        public void OnMDScissors(HDScissorsMessage o)
         {
             throw new NotImplementedException();
         }
@@ -21,7 +21,7 @@ namespace VRClient
             throw new NotImplementedException();
         }
 
-        void IMessage.OnMDTitaniumClamp(UM_MDTitaniumClamp o)
+        void IMessage.OnMDTitaniumClamp(HDTitaniumClampMessage o)
         {
             throw new NotImplementedException();
         }

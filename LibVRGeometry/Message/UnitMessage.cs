@@ -6,6 +6,7 @@ namespace LibVRGeometry
     /// 单位信息.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(3, typeof(HDMessage))]
     public class UnitMessage
     {
         /// <summary>
@@ -15,15 +16,9 @@ namespace LibVRGeometry
         public int id;
 
         /// <summary>
-        /// 设备的移动速度 米/秒
-        /// </summary>
-        [ProtoMember(2)]
-        public float move_speed;
-
-        /// <summary>
         /// ID
         /// </summary>
-        [ProtoMember(3)]
-        public float rotate_speed;
+        [ProtoMember(2)]
+        public UnitMessageState state;
     }
 }

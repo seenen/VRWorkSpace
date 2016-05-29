@@ -149,7 +149,7 @@ namespace VRClient
             //string output = EditorMessageDecoder.EncodeMessage(data);
             string output = MessageDecoder.EncodeMessageByProtobuf<T>(data);
 
-            T t = MessageDecoder.DecodeMessageByProtobuf<T>(output);
+            //T t = MessageDecoder.DecodeMessageByProtobuf<T>(output);
 
             if (output.Length > 10000)
             {

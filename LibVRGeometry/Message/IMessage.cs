@@ -16,9 +16,9 @@ namespace LibVRGeometry
         #region 场景和单位
         void OnEditorMessage(EditorMessage buffer);
 
-        void OnMDTitaniumClamp(UM_MDTitaniumClamp o);
+        void OnMDTitaniumClamp(HDTitaniumClampMessage o);
 
-        void OnMDScissors(UM_MDScissors o);
+        void OnMDScissors(HDScissorsMessage o);
 
         void OnSceneMessage(SceneMessage o);
         #endregion 场景和单位
