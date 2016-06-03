@@ -26,6 +26,11 @@ namespace VRClient
             throw new NotImplementedException();
         }
 
+        void IMessage.OnMDRobotArm(HDRobotArmMessage o)
+        {
+            throw new NotImplementedException();
+        }
+
         void IMessage.OnSceneMessage(SceneMessage o)
         {
             throw new NotImplementedException();

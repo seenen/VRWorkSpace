@@ -125,6 +125,9 @@ namespace LibVRGeometry
                 else if (str.Contains(typeof(HDScissorsMessage).ToString()))
                     callback.OnMDScissors(Serializer.Deserialize<HDScissorsMessage>(ms));
 
+                else if (str.Contains(typeof(HDRobotArmMessage).ToString()))
+                    callback.OnMDRobotArm(Serializer.Deserialize<HDRobotArmMessage>(ms));
+
                 else if (str.Contains(typeof(SceneMessage).ToString()))
                     callback.OnSceneMessage(Serializer.Deserialize<SceneMessage>(ms));
 

@@ -27,5 +27,11 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoMember(3)]
         Scissors,
+
+        /// <summary>
+        /// 机械手臂
+        /// </summary>
+        [ProtoMember(4)]
+        RobotArm,
     }
 }

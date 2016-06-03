@@ -20,6 +20,8 @@ namespace LibVRGeometry
 
         void OnMDScissors(HDScissorsMessage o);
 
+        void OnMDRobotArm(HDRobotArmMessage o);
+
         void OnSceneMessage(SceneMessage o);
         #endregion 场景和单位
 

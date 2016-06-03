@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServer\Server.cs" />
+    <Compile Include="HardDevices\HDRobotArmMessage.cs" />
     <Compile Include="Message\CompressionHelper.cs" />
     <Compile Include="Message\MessageDecoder.cs" />
     <Compile Include="Geometry\VBOBufferSingleFile.cs" />

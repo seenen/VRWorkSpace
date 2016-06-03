@@ -43,6 +43,7 @@
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.unity3dControl2 = new VRClient.Unity3dControl();
+            this.RobotArm = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.RobotArm);
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.button4);
@@ -166,11 +168,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(271, 20);
+            this.button3.Location = new System.Drawing.Point(211, 20);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(53, 38);
+            this.button3.Size = new System.Drawing.Size(113, 38);
             this.button3.TabIndex = 1;
-            this.button3.Text = "测试虚拟变形";
+            this.button3.Text = "Win一键变形";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -178,7 +180,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(6, 20);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(260, 38);
+            this.button2.Size = new System.Drawing.Size(199, 38);
             this.button2.TabIndex = 0;
             this.button2.Text = "初始化一个胆囊拆除场景";
             this.button2.UseVisualStyleBackColor = true;
@@ -208,6 +210,16 @@
             this.unity3dControl2.Name = "unity3dControl2";
             this.unity3dControl2.Size = new System.Drawing.Size(901, 547);
             this.unity3dControl2.TabIndex = 1;
+            // 
+            // RobotArm
+            // 
+            this.RobotArm.Location = new System.Drawing.Point(6, 165);
+            this.RobotArm.Name = "RobotArm";
+            this.RobotArm.Size = new System.Drawing.Size(75, 23);
+            this.RobotArm.TabIndex = 5;
+            this.RobotArm.Text = "加载机械手臂";
+            this.RobotArm.UseVisualStyleBackColor = true;
+            this.RobotArm.Click += new System.EventHandler(this.RobotArm_Click);
             // 
             // Form1
             // 
@@ -249,6 +261,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button RobotArm;
     }
 }
 

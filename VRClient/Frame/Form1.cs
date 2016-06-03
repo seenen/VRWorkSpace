@@ -262,5 +262,30 @@ namespace VRClient
             ((Button)button4).Enabled = true;
             ((Button)button5).Enabled = true;
         }
+
+        RobotArm mRobotArm = null;
+        HDRobotArmMessage mHDRobotArmMessage = new HDRobotArmMessage();
+
+        private void RobotArm_Click(object sender, EventArgs e)
+        {
+            if (mRobotArm == null)
+            {
+                mHDRobotArmMessage.id = 100;
+                mHDRobotArmMessage.type = HDType.RobotArm;
+                mHDRobotArmMessage.state = UnitMessageState.Create;
+                mHDRobotArmMessage.mFaceAngle = 0;
+                mHDRobotArmMessage.mElbowAngle = 0;
+                mHDRobotArmMessage.mShoulderHeight = 50f / 100f;
+                mHDRobotArmMessage.mUpperarmLen = 50f / 100f;
+                mHDRobotArmMessage.mForearmLen = 80f / 100f;
+                mHDRobotArmMessage.mOriginPos = new _Vector3(0, 0, 0);
+
+                mRobotArm = new RobotArm(mHDRobotArmMessage);
+
+                mRobotArm.Fresh(mHDRobotArmMessage);
+
+                this.unity3dControl2.SendMessage<HDRobotArmMessage>(mHDRobotArmMessage);
+            }
+        }
     }
 }
