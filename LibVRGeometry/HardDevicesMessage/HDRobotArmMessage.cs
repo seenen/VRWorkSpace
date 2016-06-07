@@ -27,19 +27,19 @@ namespace LibVRGeometry
         public float mElbowAngle = 0;
 
         /// <summary>
-        /// 肩高
+        /// 肩高(米)
         /// </summary>
         [ProtoMember(3)]
         public float mShoulderHeight = 0;
 
         /// <summary>
-        /// 上臂长度
+        /// 上臂长度(米)
         /// </summary>
         [ProtoMember(4)]
         public float mUpperarmLen = 0;
 
         /// <summary>
-        /// 前臂长度
+        /// 前臂长度(米)
         /// </summary>
         [ProtoMember(5)]
         public float mForearmLen = 0;

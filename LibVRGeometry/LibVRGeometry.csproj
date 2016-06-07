@@ -50,8 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MathUtil.cs" />
     <Compile Include="DataServer\Server.cs" />
-    <Compile Include="HardDevices\HDRobotArmMessage.cs" />
+    <Compile Include="HardDevicesMessage\HDRobotArmMessage.cs" />
     <Compile Include="Message\CompressionHelper.cs" />
     <Compile Include="Message\MessageDecoder.cs" />
     <Compile Include="Geometry\VBOBufferSingleFile.cs" />
@@ -60,11 +61,11 @@
     <Compile Include="Geometry\ObjModel.cs" />
     <Compile Include="Geometry\ObjModelRaw.cs" />
     <Compile Include="DataBase\ObjFile.cs" />
-    <Compile Include="HardDevices\InteractiveMessage.cs" />
-    <Compile Include="HardDevices\HDMessage.cs" />
-    <Compile Include="HardDevices\HDScissorsMessage.cs" />
-    <Compile Include="HardDevices\HDTitaniumClampMessage.cs" />
-    <Compile Include="HardDevices\HDType.cs" />
+    <Compile Include="HardDevicesMessage\InteractiveMessage.cs" />
+    <Compile Include="HardDevicesMessage\HDMessage.cs" />
+    <Compile Include="HardDevicesMessage\HDScissorsMessage.cs" />
+    <Compile Include="HardDevicesMessage\HDTitaniumClampMessage.cs" />
+    <Compile Include="HardDevicesMessage\HDType.cs" />
     <Compile Include="Message\UnitMessage.cs" />
     <Compile Include="Geometry\VBOState.cs" />
     <Compile Include="DataBase\_PointAttachmentInfo.cs" />
@@ -81,6 +82,8 @@
     <Compile Include="DataBase\GroupData.cs" />
     <Compile Include="DataBase\ObjectData.cs" />
     <Compile Include="Geometry\VBOBuffer.cs" />
+    <Compile Include="VRWorld\RobotArm.cs" />
+    <Compile Include="VRWorld\World.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -85,7 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\MathUtil.cs" />
     <Compile Include="Data\DataServer.cs" />
     <Compile Include="Frame\CFG_MDForm.cs">
       <SubType>Form</SubType>
@@ -124,8 +123,6 @@
     </Compile>
     <Compile Include="VRClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="World\RobotArm.cs" />
-    <Compile Include="World\World.cs" />
     <EmbeddedResource Include="Frame\CFG_MDForm.resx">
       <DependentUpon>CFG_MDForm.cs</DependentUpon>
     </EmbeddedResource>

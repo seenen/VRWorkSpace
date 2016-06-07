@@ -1,6 +1,7 @@
 ﻿using LibVRGeometry;
+using LibVRGeometry.Util;
 
-namespace VRClient
+namespace LibVRGeometry.VRWorld
 {
     /// <summary>
     /// 机械手臂
@@ -17,6 +18,15 @@ namespace VRClient
 
         //  手位置
         _Vector3 mHandlerPos;
+
+        //  工具长度
+        float mToolLength;
+
+        //  工具头部
+        _Vector3 mToolHead = new _Vector3(0, 0, 0);
+
+        //  工具尾部
+        _Vector3 mToolTail = new _Vector3(0, 0, 0);
 
         HDRobotArmMessage mHDRobotArmMessage;
 
@@ -48,45 +58,41 @@ namespace VRClient
             mHDRobotArmMessage.mShoulderHeight = ShoulderHeight;
             mHDRobotArmMessage.mUpperarmLen = UpperarmLen;
             mHDRobotArmMessage.mForearmLen = ForearmLen;
-
-            UpdateData();
         }
 
         public RobotArm(HDRobotArmMessage ram)
         {
+            mId = ram.id;
+
             mHDRobotArmMessage = ram;
-
-            UpdateData();
-        }
-
-        void UpdateData()
-        {
-            //  肩部位置
-            mShoulderPos = new _Vector3(mHDRobotArmMessage.mOriginPos.X,
-                                        mHDRobotArmMessage.mOriginPos.Y + mHDRobotArmMessage.mShoulderHeight,
-                                        mHDRobotArmMessage.mOriginPos.Z);
-
-            ElbowPos();
         }
 
         /// <summary>
-        /// 绕Y旋转
+        /// 更新工具位置
         /// </summary>
-        void ElbowPos()
+        /// <param name="toollen">工具总长</param>
+        /// <param name="upperpartlen">工具到顶部位置</param>
+        public void UpdateTool(float toollen, float upperpartlen)
         {
-            double x = (double)mHDRobotArmMessage.mUpperarmLen;
-            double y = (double)mHDRobotArmMessage.mShoulderHeight;
-            double z = (double)0;
+            if (toollen < upperpartlen)
+                throw new System.Exception("toollen < upperpartlen");
 
-            double x_new =  z * System.Math.Sin(MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mFaceAngle)) + 
-                            x * System.Math.Cos(MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mFaceAngle));
-            double y_new =  y;
-            double z_new =  z * System.Math.Cos(MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mFaceAngle)) -
-                            x * System.Math.Sin(MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mFaceAngle));
+            //  求弧度
+            double A1 = MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mFaceAngle);
+            double A2 = MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mElbowAngle);
 
-            //  肘部位置
-            mElbowPos = new _Vector3((float)x_new, (float)y_new, (float)z_new);
+            double P2_x = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Cos(A2) +
+                            (toollen - upperpartlen) * System.Math.Sin(A2);
+            double P2_y = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2) -
+                            (toollen - upperpartlen) * System.Math.Cos(A2);
 
+            //  P2_x就是距离基座的距离
+
+            mToolHead.X = (float)(P2_x * System.Math.Cos(A1));
+            mToolHead.Y = (float)P2_y;
+            mToolHead.Z = -(float)(P2_x * System.Math.Sin(A1));
+
+            return;
         }
 
         /// <summary>
@@ -99,8 +105,6 @@ namespace VRClient
                 return false;
 
             mHDRobotArmMessage = ram;
-
-            UpdateData();
 
             return true;
         }

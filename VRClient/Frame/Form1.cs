@@ -1,12 +1,9 @@
 ﻿#define DataServer
 
-using LibraryMM;
 using LibVRGeometry;
 using LibVRGeometry.Message;
+using LibVRGeometry.VRWorld;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -19,6 +16,8 @@ namespace VRClient
             InitializeComponent();
 
             CreateMenu();
+
+            CreateVRWorld();
 
             this.Shown += Form1_Shown;
         }
@@ -114,8 +113,14 @@ namespace VRClient
             Console.WriteLine("Alpha.Beta has finished");
         }
 
+        #region 初始化世界
+        void CreateVRWorld()
+        {
+            VRWorld vrworld = new VRWorld();
+        }
+        #endregion
 
-#region 胆囊操作流程
+        #region 胆囊操作流程
         /// <summary>
         /// 初始化一个胆囊拆除场景
         /// </summary>
@@ -273,16 +278,18 @@ namespace VRClient
                 mHDRobotArmMessage.id = 100;
                 mHDRobotArmMessage.type = HDType.RobotArm;
                 mHDRobotArmMessage.state = UnitMessageState.Create;
-                mHDRobotArmMessage.mFaceAngle = 0;
-                mHDRobotArmMessage.mElbowAngle = 0;
-                mHDRobotArmMessage.mShoulderHeight = 50f / 100f;
-                mHDRobotArmMessage.mUpperarmLen = 50f / 100f;
-                mHDRobotArmMessage.mForearmLen = 80f / 100f;
+                mHDRobotArmMessage.mFaceAngle = 30;
+                mHDRobotArmMessage.mElbowAngle = 30;
+                mHDRobotArmMessage.mShoulderHeight = 50f;
+                mHDRobotArmMessage.mUpperarmLen = 50f;
+                mHDRobotArmMessage.mForearmLen = 80f;
                 mHDRobotArmMessage.mOriginPos = new _Vector3(0, 0, 0);
 
                 mRobotArm = new RobotArm(mHDRobotArmMessage);
 
                 mRobotArm.Fresh(mHDRobotArmMessage);
+
+                mRobotArm.UpdateTool(220, 120);
 
                 this.unity3dControl2.SendMessage<HDRobotArmMessage>(mHDRobotArmMessage);
             }

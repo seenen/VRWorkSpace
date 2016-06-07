@@ -1,12 +1,12 @@
 ﻿using LibVRGeometry;
 
-namespace VRClient
+namespace LibVRGeometry.VRWorld
 {
-    public class World
+    public class VRWorld
     {
         RobotArm mRobotArm;
 
-        public World()
+        public VRWorld()
         {
             //  初始化一个机械手臂
             mRobotArm = new RobotArm(   100, 
@@ -14,6 +14,7 @@ namespace VRClient
                                         50,
                                         50,
                                         80);
+
         }
     }
 }

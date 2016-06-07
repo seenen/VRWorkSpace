@@ -1,4 +1,5 @@
 ﻿using LibraryMM;
+using LibVRGeometry.VRWorld;
 using System;
 using System.Windows.Forms;
 
@@ -24,6 +25,8 @@ namespace VRClient
 
             mMemoryMap = new MemoryMap();
 
+            mVRWorld = new VRWorld();
+
             //CreateReaderMemory();
 
             Application.EnableVisualStyles();
@@ -38,6 +41,8 @@ namespace VRClient
         static string MutexName = "TestMutexName";
  
         public static ReadOperate coReader;
+
+        static VRWorld mVRWorld = null;
 
         static void CreateReaderMemory()
         {
