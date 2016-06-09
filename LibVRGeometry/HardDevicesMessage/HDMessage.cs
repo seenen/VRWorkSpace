@@ -6,9 +6,9 @@ namespace LibVRGeometry
     /// 器械.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(4, typeof(HDScissorsMessage))]
-    [ProtoInclude(5, typeof(HDTitaniumClampMessage))]
-    [ProtoInclude(6, typeof(HDRobotArmMessage))]
+    [ProtoInclude(6, typeof(HDScissorsMessage))]
+    [ProtoInclude(7, typeof(HDTitaniumClampMessage))]
+    [ProtoInclude(8, typeof(HDRobotArmMessage))]
     public class HDMessage : UnitMessage
     {
         /// <summary>
@@ -29,5 +29,17 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoMember(3)]
         public float rotate_speed;
+
+        /// <summary>
+        /// 长度
+        /// </summary>
+        [ProtoMember(4)]
+        public float length;
+
+        /// <summary>
+        /// 宽度
+        /// </summary>
+        [ProtoMember(5)]
+        public float width;
     }
 }

@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataServer.cs" />
+    <Compile Include="Data\WorldMgr.cs" />
     <Compile Include="Frame\CFG_MDForm.cs">
       <SubType>Form</SubType>
     </Compile>

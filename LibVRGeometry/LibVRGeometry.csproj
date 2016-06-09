@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\MathUtil.cs" />
+    <Compile Include="Util\MathUtil.cs" />
     <Compile Include="DataServer\Server.cs" />
     <Compile Include="HardDevicesMessage\HDRobotArmMessage.cs" />
     <Compile Include="Message\CompressionHelper.cs" />
@@ -82,8 +82,9 @@
     <Compile Include="DataBase\GroupData.cs" />
     <Compile Include="DataBase\ObjectData.cs" />
     <Compile Include="Geometry\VBOBuffer.cs" />
+    <Compile Include="VRWorld\IWorld.cs" />
     <Compile Include="VRWorld\RobotArm.cs" />
-    <Compile Include="VRWorld\World.cs" />
+    <Compile Include="VRWorld\VRAPI.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,10 +23,26 @@ namespace LibVRGeometry.VRWorld
         float mToolLength;
 
         //  工具头部
-        _Vector3 mToolHead = new _Vector3(0, 0, 0);
+        //_Vector3 mToolHead = new _Vector3(0, 0, 0);
 
-        //  工具尾部
-        _Vector3 mToolTail = new _Vector3(0, 0, 0);
+        //public _Vector3 ToolHead
+        //{
+        //    get
+        //    {
+        //        return mToolHead;
+        //    }
+        //}
+
+        ////  工具尾部
+        //_Vector3 mToolTail = new _Vector3(0, 0, 0);
+
+        //public _Vector3 ToolTail
+        //{
+        //    get
+        //    {
+        //        return mToolTail;
+        //    }
+        //}
 
         HDRobotArmMessage mHDRobotArmMessage;
 
@@ -81,16 +97,27 @@ namespace LibVRGeometry.VRWorld
             double A1 = MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mFaceAngle);
             double A2 = MathUtil.ConvertToRadians((double)mHDRobotArmMessage.mElbowAngle);
 
-            double P2_x = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Cos(A2) +
-                            (toollen - upperpartlen) * System.Math.Sin(A2);
-            double P2_y = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2) -
-                            (toollen - upperpartlen) * System.Math.Cos(A2);
+            {
+                double P2_x = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Cos(A2) +
+                                (toollen - upperpartlen) * System.Math.Sin(A2);
+                double P2_y = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2) -
+                                (toollen - upperpartlen) * System.Math.Cos(A2);
 
-            //  P2_x就是距离基座的距离
+                //  P2_x就是距离基座的距离
+                mHDRobotArmMessage.mToolHead.X = (float)(P2_x * System.Math.Cos(A1));
+                mHDRobotArmMessage.mToolHead.Y = (float)P2_y;
+                mHDRobotArmMessage.mToolHead.Z = -(float)(P2_x * System.Math.Sin(A1));
 
-            mToolHead.X = (float)(P2_x * System.Math.Cos(A1));
-            mToolHead.Y = (float)P2_y;
-            mToolHead.Z = -(float)(P2_x * System.Math.Sin(A1));
+            }
+
+            {
+                double P_x = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Cos(A2);
+                double P_y = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2);
+
+                mHDRobotArmMessage.mToolKey.X = (float)P_x;
+                mHDRobotArmMessage.mToolKey.Y = (float)P_y;
+                mHDRobotArmMessage.mToolKey.Z = -(float)(P_x * System.Math.Sin(A1));
+            }
 
             return;
         }

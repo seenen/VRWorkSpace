@@ -11,13 +11,16 @@ namespace VRClient
 {
     public partial class Form1 : Form
     {
+        static WorldMgr mWorldMgr = null;
+
         public Form1()
         {
             InitializeComponent();
 
             CreateMenu();
 
-            CreateVRWorld();
+            mWorldMgr = new WorldMgr(this.unity3dControl2);
+            VRAPI.SetU3DHandler(mWorldMgr);
 
             this.Shown += Form1_Shown;
         }
@@ -113,13 +116,6 @@ namespace VRClient
             Console.WriteLine("Alpha.Beta has finished");
         }
 
-        #region 初始化世界
-        void CreateVRWorld()
-        {
-            VRWorld vrworld = new VRWorld();
-        }
-        #endregion
-
         #region 胆囊操作流程
         /// <summary>
         /// 初始化一个胆囊拆除场景
@@ -174,8 +170,8 @@ namespace VRClient
             tc.id = 0;
             tc.state = UnitMessageState.Create;
             tc.type = HDType.TitaniumClamp;
-            tc.move_speed = 0.2f;
-            tc.rotate_speed = 30;
+            //tc.move_speed = 0.2f;
+            //tc.rotate_speed = 30;
             tc.merge_degree = 10;
             tc.merge_speed = 6;
 
@@ -191,8 +187,8 @@ namespace VRClient
             s.id = 1;
             s.state = UnitMessageState.Create;
             s.type = HDType.Scissors;
-            s.move_speed = 0.2f;
-            s.rotate_speed = 30;
+            //s.move_speed = 0.2f;
+            //s.rotate_speed = 30;
             s.merge_degree = 10;
             s.merge_speed = 6;
 
@@ -268,6 +264,7 @@ namespace VRClient
             ((Button)button5).Enabled = true;
         }
 
+        #region 机械手
         RobotArm mRobotArm = null;
         HDRobotArmMessage mHDRobotArmMessage = new HDRobotArmMessage();
 
@@ -284,15 +281,40 @@ namespace VRClient
                 mHDRobotArmMessage.mUpperarmLen = 50f;
                 mHDRobotArmMessage.mForearmLen = 80f;
                 mHDRobotArmMessage.mOriginPos = new _Vector3(0, 0, 0);
+                mHDRobotArmMessage.length = 220;
 
-                mRobotArm = new RobotArm(mHDRobotArmMessage);
+                VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, 120);
 
-                mRobotArm.Fresh(mHDRobotArmMessage);
+                trackBar1.Value = (int)mHDRobotArmMessage.mFaceAngle;
+                trackBar2.Value = (int)mHDRobotArmMessage.mElbowAngle;
+                trackBar3.Value = (int)120;
 
-                mRobotArm.UpdateTool(220, 120);
-
-                this.unity3dControl2.SendMessage<HDRobotArmMessage>(mHDRobotArmMessage);
             }
         }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            mHDRobotArmMessage.state = UnitMessageState.Modify;
+            mHDRobotArmMessage.mFaceAngle = trackBar1.Value;
+
+            VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, trackBar3.Value);
+        }
+
+        private void trackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            mHDRobotArmMessage.state = UnitMessageState.Modify;
+            mHDRobotArmMessage.mElbowAngle = trackBar2.Value;
+
+            VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, trackBar3.Value);
+
+        }
+
+        private void trackBar3_ValueChanged(object sender, EventArgs e)
+        {
+            mHDRobotArmMessage.state = UnitMessageState.Modify;
+
+            VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, trackBar3.Value);
+        }
+        #endregion
     }
 }

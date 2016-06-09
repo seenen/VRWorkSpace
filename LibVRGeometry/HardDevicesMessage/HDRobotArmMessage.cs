@@ -9,6 +9,7 @@ namespace LibVRGeometry
     /// <summary>
     /// 剪刀
     /// </summary>
+    [Serializable]
     [ProtoContract]
     public class HDRobotArmMessage : HDMessage
     {
@@ -49,5 +50,21 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoMember(6)]
         public _Vector3 mOriginPos = new _Vector3(0, 0, 0);
+
+
+        /// <summary>
+        /// 器材头部位置
+        /// </summary>
+        [ProtoMember(7)]
+        public _Vector3 mToolHead = new _Vector3(0, 0, 0);
+
+
+        /// <summary>
+        /// 机械臂和器材连接点
+        /// </summary>
+        [ProtoMember(8)]
+        public _Vector3 mToolKey = new _Vector3(0, 0, 0);
+
+        
     }
 }
