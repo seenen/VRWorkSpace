@@ -126,7 +126,7 @@ namespace VRClient
         {
             InitScene();
 
-            InitHall();
+            //InitHall();
 
             ((Button)sender).Enabled = false;
         }
@@ -283,11 +283,14 @@ namespace VRClient
                 mHDRobotArmMessage.mOriginPos = new _Vector3(0, 0, 0);
                 mHDRobotArmMessage.length = 220;
 
-                VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, 120);
+                VRAPI.UpdateLeftRobotArm(ref mHDRobotArmMessage, 120);
 
                 trackBar1.Value = (int)mHDRobotArmMessage.mFaceAngle;
+                textBox1.Text = trackBar1.Value.ToString();
                 trackBar2.Value = (int)mHDRobotArmMessage.mElbowAngle;
+                textBox2.Text = trackBar2.Value.ToString();
                 trackBar3.Value = (int)120;
+                textBox3.Text = trackBar3.Value.ToString();
 
             }
         }
@@ -296,24 +299,39 @@ namespace VRClient
         {
             mHDRobotArmMessage.state = UnitMessageState.Modify;
             mHDRobotArmMessage.mFaceAngle = trackBar1.Value;
+            textBox1.Text = trackBar1.Value.ToString();
 
-            VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, trackBar3.Value);
+            VRAPI.UpdateLeftRobotArm(ref mHDRobotArmMessage, trackBar3.Value);
+
+            label4.Text =   "   X:" + mHDRobotArmMessage.mToolHead.X +
+                            "   Y:" + mHDRobotArmMessage.mToolHead.Y +
+                            "   Z:" + mHDRobotArmMessage.mToolHead.Z;
         }
 
         private void trackBar2_ValueChanged(object sender, EventArgs e)
         {
             mHDRobotArmMessage.state = UnitMessageState.Modify;
             mHDRobotArmMessage.mElbowAngle = trackBar2.Value;
+            textBox2.Text = trackBar2.Value.ToString();
 
-            VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, trackBar3.Value);
+            VRAPI.UpdateLeftRobotArm(ref mHDRobotArmMessage, trackBar3.Value);
+
+            label4.Text = "   X:" + mHDRobotArmMessage.mToolHead.X +
+                            "   Y:" + mHDRobotArmMessage.mToolHead.Y +
+                            "   Z:" + mHDRobotArmMessage.mToolHead.Z;
 
         }
 
         private void trackBar3_ValueChanged(object sender, EventArgs e)
         {
             mHDRobotArmMessage.state = UnitMessageState.Modify;
+            textBox3.Text = trackBar3.Value.ToString();
 
-            VRAPI.UpdateLeftRobotArm(mHDRobotArmMessage, trackBar3.Value);
+            VRAPI.UpdateLeftRobotArm(ref mHDRobotArmMessage, trackBar3.Value);
+
+            label4.Text = "   X:" + mHDRobotArmMessage.mToolHead.X +
+                            "   Y:" + mHDRobotArmMessage.mToolHead.Y +
+                            "   Z:" + mHDRobotArmMessage.mToolHead.Z;
         }
         #endregion
     }

@@ -112,11 +112,19 @@ namespace LibVRGeometry.VRWorld
 
             {
                 double P_x = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Cos(A2);
-                double P_y = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2);
+                double P_y = mHDRobotArmMessage.mShoulderHeight + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2);
 
-                mHDRobotArmMessage.mToolKey.X = (float)P_x;
+                mHDRobotArmMessage.mToolKey.X = (float)(P_x * System.Math.Cos(A1));
                 mHDRobotArmMessage.mToolKey.Y = (float)P_y;
-                mHDRobotArmMessage.mToolKey.Z = -(float)(P_x * System.Math.Sin(A1));
+                mHDRobotArmMessage.mToolKey.Z = (float)(P_x * System.Math.Sin(A1));
+            }
+
+            {
+
+                mHDRobotArmMessage.mToolElbow.X = (float)(mHDRobotArmMessage.mUpperarmLen * System.Math.Cos(A1));
+                mHDRobotArmMessage.mToolElbow.Y = (float)mHDRobotArmMessage.mShoulderHeight;
+                mHDRobotArmMessage.mToolElbow.Z = (float)(mHDRobotArmMessage.mUpperarmLen * System.Math.Sin(A1));
+
             }
 
             return;

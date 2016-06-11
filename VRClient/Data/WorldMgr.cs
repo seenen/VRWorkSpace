@@ -18,7 +18,7 @@ namespace LibVRGeometry.VRWorld
         RobotArm mRRobotArm;
         HDRobotArmMessage mRHDRobotArmMessage;
 
-        public bool UpdateLRobotArm(HDRobotArmMessage msg, float Len)
+        public bool UpdateLRobotArm(ref HDRobotArmMessage msg, float Len)
         {
             if (msg == null)
                 return false;
@@ -35,6 +35,8 @@ namespace LibVRGeometry.VRWorld
             mLRobotArm.UpdateTool(msg.length, Len);
 
             this.unity3dControl2.SendMessage<HDRobotArmMessage>(msg);
+
+            msg = mLHDRobotArmMessage;
 
             return true;
         }

@@ -7,7 +7,7 @@ namespace LibVRGeometry.VRWorld
 {
     public interface IWorld
     {
-        bool UpdateLRobotArm(HDRobotArmMessage msg, float Len);
+        bool UpdateLRobotArm(ref HDRobotArmMessage msg, float Len);
 
         bool UpdateRRobotArm(HDRobotArmMessage msg, float Len);
 

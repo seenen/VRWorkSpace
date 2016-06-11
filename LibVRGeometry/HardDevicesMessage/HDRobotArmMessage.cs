@@ -65,6 +65,12 @@ namespace LibVRGeometry
         [ProtoMember(8)]
         public _Vector3 mToolKey = new _Vector3(0, 0, 0);
 
+        /// <summary>
+        /// 机械臂肘部位置
+        /// </summary>
+        [ProtoMember(9)]
+        public _Vector3 mToolElbow = new _Vector3(0, 0, 0);
+
         
     }
 }

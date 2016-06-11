@@ -24,9 +24,9 @@ namespace LibVRGeometry.VRWorld
         /// 给左边机械手绑定器械
         /// </summary>
         /// <param name="hdmsg"></param>
-        public static bool UpdateLeftRobotArm(HDRobotArmMessage armmsg, float Len)
+        public static bool UpdateLeftRobotArm(ref HDRobotArmMessage armmsg, float Len)
         {
-            return mIWorld.UpdateLRobotArm(armmsg, Len);
+            return mIWorld.UpdateLRobotArm(ref armmsg, Len);
         }
 
         #endregion
