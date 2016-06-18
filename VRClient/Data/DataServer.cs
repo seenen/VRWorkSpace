@@ -79,10 +79,11 @@ namespace VRClient
                 UpdateModel();
 
                 Thread.Sleep(10);
+                //Thread.Sleep((int)(UnityEngine.Time.deltaTime * 1000));
 
                 index++;
 
-                if (index == MAX_COUNT) break;
+                if (index == MAX_COUNT) index = 0;
 
                 float start = System.DateTime.Now.Millisecond;
 

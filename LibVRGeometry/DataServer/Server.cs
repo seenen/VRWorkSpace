@@ -26,6 +26,7 @@ namespace LibVRGeometry
 
         public static void StartServer(string fileName)
         {
+            //Run("DataServer/qingxing.dat");
             Run(fileName);
         }
 
@@ -64,7 +65,7 @@ namespace LibVRGeometry
             }
         }
 
-        private static void SetNewSurfacePoints(float[] sfArray)
+        private static void SetNewSurfacePoints(double[] sfArray)
         {
             int sfSize = sfArray.Length;
             IntPtr sfPtr;
@@ -81,16 +82,30 @@ namespace LibVRGeometry
             SetVi(vbo);
 
             int sfSize = ViSize;
-            float[] sfArray = new float[sfSize];
+            double[] sfArray = new double[sfSize];
             SetNewSurfacePoints(sfArray);
 
             vbo.vertices.Clear();
 
-            for (int i = 0; i < sfSize / 3; i++)
+            int curX = 0;
+            for (int i = 0; i < SurfacePointCount; i++)
             {
-                int curX = i * 3;
-                vbo.vertices.Add(new _Vector3(sfArray[curX], sfArray[curX + 1], sfArray[curX + 2]));
+                _Vector3 pos = new _Vector3((float)(sfArray[curX] / 1), 
+                                            (float)(sfArray[curX + 1] / 1), 
+                                            (float)(sfArray[curX + 2] / 1));
+                vbo.vertices.Add(pos);
+                curX += 3;
             }
+
+
+            //for (int i = 0; i < sfSize / 3; i++)
+            //{
+            //int curX = i * 3;
+            //_Vector3 pos = new _Vector3((float)(sfArray[curX] / 1000f), 
+            //                            (float)(sfArray[curX + 1] / 1000f), 
+            //                            (float)(sfArray[curX + 2] / 1000f));
+            //vbo.vertices.Add(pos);
+            //}
 
             return;
         }

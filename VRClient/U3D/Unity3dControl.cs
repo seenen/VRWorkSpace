@@ -101,7 +101,7 @@ namespace VRClient
 
             Console.WriteLine(str);
 
-            MessageDecoder.DecodeMessageWithHeader(str, mMessageInstance);
+            MessageDecoder.DecodeMessageWithHeader(str, Form1.mMessageInstance);
 
             //object data = MessageDecoder.DecodeMessage(str);
 
@@ -173,20 +173,6 @@ namespace VRClient
 
             return;
         }
-
-        MessageInstance mMessageInstance = new MessageInstance();
-        public void RecvMessage(object data)
-        {
-            
-            ////if (data is RspOnObjectSelected)
-            ////{
-            ////    RspOnObjectSelected rsp = data as RspOnObjectSelected;
-            ////    rsp.Selected = true;
-            ////}
-        }
-
-
-        //------------------------------------------------------------------------------
 
         #endregion
 

@@ -11,5 +11,6 @@ namespace LibVRGeometry.VRWorld
 
         bool UpdateRRobotArm(HDRobotArmMessage msg, float Len);
 
+        bool AddMessage(IMessage_U2C msg);
     }
 }

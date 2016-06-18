@@ -1,6 +1,8 @@
-﻿using LibVRGeometry;
+﻿using System;
+using LibVRGeometry;
 using LibVRGeometry.VRWorld;
 using VRClient;
+using System.Collections.Generic;
 
 namespace LibVRGeometry.VRWorld
 {
@@ -61,6 +63,33 @@ namespace LibVRGeometry.VRWorld
 
             return true;
 
+        }
+
+
+        List<IMessage_U2C> listMsg = new List<IMessage_U2C>();
+
+        /// <summary>
+        /// 添加消息的监听
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public bool AddMessage(IMessage_U2C msg)
+        {
+            listMsg.Add(msg);
+
+            return true;
+        }
+
+        /// <summary>
+        /// 向注册的对象发送消息
+        /// </summary>
+        /// <param name="o"></param>
+        internal protected void OnMD2HO(IM_MD2HO o)
+        {
+            foreach (IMessage_U2C m in listMsg)
+            {
+                m.OnMD2HO(o);
+            }
         }
     }
 }

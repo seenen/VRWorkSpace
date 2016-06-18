@@ -1,14 +1,22 @@
 ﻿using System;
 using LibVRGeometry;
 using LibVRGeometry.Message;
+using LibVRGeometry.VRWorld;
 
 namespace VRClient
 {
     public class MessageInstance : IMessage
     {
-        public void OnMD2HO(IM_MD2HO o)
+        WorldMgr mWorldMgr = null;
+
+        public MessageInstance(WorldMgr mgr)
         {
-            throw new NotImplementedException();
+            mWorldMgr = mgr;
+        }
+
+        void IMessage_U2C.OnMD2HO(IM_MD2HO o)
+        {
+            mWorldMgr.OnMD2HO(o);
         }
 
         public void OnMDScissors(HDScissorsMessage o)
@@ -16,32 +24,37 @@ namespace VRClient
             throw new NotImplementedException();
         }
 
-        void IMessage.OnEditorMessage(EditorMessage buffer)
+        void IMessage_C2U.OnEditorMessage(EditorMessage buffer)
         {
             throw new NotImplementedException();
         }
 
-        void IMessage.OnMDTitaniumClamp(HDTitaniumClampMessage o)
+        void IMessage_C2U.OnMDTitaniumClamp(HDTitaniumClampMessage o)
         {
             throw new NotImplementedException();
         }
 
-        void IMessage.OnMDRobotArm(HDRobotArmMessage o)
+        void IMessage_C2U.OnMDRobotArm(HDRobotArmMessage o)
         {
             throw new NotImplementedException();
         }
 
-        void IMessage.OnSceneMessage(SceneMessage o)
+        void IMessage_C2U.OnSceneMessage(SceneMessage o)
         {
             throw new NotImplementedException();
         }
 
-        void IMessage.OnVBOBuffer(VBOBuffer buffer)
+        void IMessage_C2U.OnVBOBuffer(VBOBuffer buffer)
         {
             throw new NotImplementedException();
         }
 
-        void IMessage.OnVBOBufferSingle(VBOBufferSingle buffer)
+        void IMessage_C2U.OnVBOBufferSingle(VBOBufferSingle buffer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnEnvCfg(EnvCfg o)
         {
             throw new NotImplementedException();
         }

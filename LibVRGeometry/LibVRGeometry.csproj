@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scene\EnvCfg.cs" />
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="DataServer\Server.cs" />
     <Compile Include="HardDevicesMessage\HDRobotArmMessage.cs" />

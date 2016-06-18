@@ -10,6 +10,8 @@ namespace LibVRGeometry.VRWorld
     {
         int mId = -1;
 
+        float factor = 0.5f;
+
         //  肩部位置
         _Vector3 mShoulderPos;
 
@@ -21,28 +23,6 @@ namespace LibVRGeometry.VRWorld
 
         //  工具长度
         float mToolLength;
-
-        //  工具头部
-        //_Vector3 mToolHead = new _Vector3(0, 0, 0);
-
-        //public _Vector3 ToolHead
-        //{
-        //    get
-        //    {
-        //        return mToolHead;
-        //    }
-        //}
-
-        ////  工具尾部
-        //_Vector3 mToolTail = new _Vector3(0, 0, 0);
-
-        //public _Vector3 ToolTail
-        //{
-        //    get
-        //    {
-        //        return mToolTail;
-        //    }
-        //}
 
         HDRobotArmMessage mHDRobotArmMessage;
 
@@ -104,9 +84,9 @@ namespace LibVRGeometry.VRWorld
                                 (toollen - upperpartlen) * System.Math.Cos(A2);
 
                 //  P2_x就是距离基座的距离
-                mHDRobotArmMessage.mToolHead.X = (float)(P2_x * System.Math.Cos(A1));
-                mHDRobotArmMessage.mToolHead.Y = (float)P2_y;
-                mHDRobotArmMessage.mToolHead.Z = -(float)(P2_x * System.Math.Sin(A1));
+                mHDRobotArmMessage.mToolHead.X = (float)(P2_x * System.Math.Cos(A1)) * factor;
+                mHDRobotArmMessage.mToolHead.Y = (float)P2_y * factor;
+                mHDRobotArmMessage.mToolHead.Z = -(float)(P2_x * System.Math.Sin(A1)) * factor;
 
             }
 
@@ -114,16 +94,16 @@ namespace LibVRGeometry.VRWorld
                 double P_x = mHDRobotArmMessage.mUpperarmLen + mHDRobotArmMessage.mForearmLen * System.Math.Cos(A2);
                 double P_y = mHDRobotArmMessage.mShoulderHeight + mHDRobotArmMessage.mForearmLen * System.Math.Sin(A2);
 
-                mHDRobotArmMessage.mToolKey.X = (float)(P_x * System.Math.Cos(A1));
-                mHDRobotArmMessage.mToolKey.Y = (float)P_y;
-                mHDRobotArmMessage.mToolKey.Z = (float)(P_x * System.Math.Sin(A1));
+                mHDRobotArmMessage.mToolKey.X = (float)(P_x * System.Math.Cos(A1)) * factor;
+                mHDRobotArmMessage.mToolKey.Y = (float)P_y * factor;
+                mHDRobotArmMessage.mToolKey.Z = (float)(P_x * System.Math.Sin(A1)) * factor;
             }
 
             {
 
-                mHDRobotArmMessage.mToolElbow.X = (float)(mHDRobotArmMessage.mUpperarmLen * System.Math.Cos(A1));
-                mHDRobotArmMessage.mToolElbow.Y = (float)mHDRobotArmMessage.mShoulderHeight;
-                mHDRobotArmMessage.mToolElbow.Z = (float)(mHDRobotArmMessage.mUpperarmLen * System.Math.Sin(A1));
+                mHDRobotArmMessage.mToolElbow.X = (float)(mHDRobotArmMessage.mUpperarmLen * System.Math.Cos(A1)) * factor;
+                mHDRobotArmMessage.mToolElbow.Y = (float)mHDRobotArmMessage.mShoulderHeight * factor;
+                mHDRobotArmMessage.mToolElbow.Z = (float)(mHDRobotArmMessage.mUpperarmLen * System.Math.Sin(A1)) * factor;
 
             }
 

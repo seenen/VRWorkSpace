@@ -131,6 +131,9 @@ namespace LibVRGeometry
                 else if (str.Contains(typeof(SceneMessage).ToString()))
                     callback.OnSceneMessage(Serializer.Deserialize<SceneMessage>(ms));
 
+                else if (str.Contains(typeof(EnvCfg).ToString()))
+                    callback.OnEnvCfg(Serializer.Deserialize<EnvCfg>(ms));
+
                 #endregion 场景和单位
 
                 #region U3D发到Winform

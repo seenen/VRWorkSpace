@@ -13,6 +13,8 @@ namespace VRClient
     {
         static WorldMgr mWorldMgr = null;
 
+        public static MessageInstance mMessageInstance;
+
         public Form1()
         {
             InitializeComponent();
@@ -20,6 +22,9 @@ namespace VRClient
             CreateMenu();
 
             mWorldMgr = new WorldMgr(this.unity3dControl2);
+
+            mMessageInstance = new MessageInstance(mWorldMgr);
+
             VRAPI.SetU3DHandler(mWorldMgr);
 
             this.Shown += Form1_Shown;
@@ -30,6 +35,10 @@ namespace VRClient
             //LoginForm qform = new LoginForm();
             //qform.Owner = this;      //假设当前窗口是新窗口的拥有者
             //qform.ShowDialog(this);
+
+            #region Test
+            VRClient.Test.Test t = new VRClient.Test.Test();
+            #endregion
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -126,7 +135,7 @@ namespace VRClient
         {
             InitScene();
 
-            //InitHall();
+            InitHall();
 
             ((Button)sender).Enabled = false;
         }
@@ -213,8 +222,6 @@ namespace VRClient
             cfgform.Owner = this;
             cfgform.ShowDialog(this);
         }
-
-        MessageInstance mMessageInstance = new MessageInstance();
 
         public void UpdateTitaniumClamp(HDTitaniumClampMessage t)
         {
@@ -334,5 +341,14 @@ namespace VRClient
                             "   Z:" + mHDRobotArmMessage.mToolHead.Z;
         }
         #endregion
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            EnvCfg cfg = new EnvCfg();
+            cfg.Log = checkBox1.Checked.ToString();
+
+            this.unity3dControl2.SendMessage<EnvCfg>(cfg);
+
+        }
     }
 }
