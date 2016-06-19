@@ -18,7 +18,6 @@ namespace VRClient.Test
     {
         public void OnMD2HO(IM_MD2HO o)
         {
-            Console.WriteLine("Ins.OnMD2HO " + o.Pos);
         }
     }
 }

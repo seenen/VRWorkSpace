@@ -40,15 +40,27 @@ namespace LibVRGeometry
         public int HO_ID;
 
         /// <summary>
-        /// 是否有刃
+        /// 左端点
         /// </summary>
         [ProtoMember(3)]
-        public bool Blade;
+        public int EndPointLeft;
 
         /// <summary>
-        /// 位置
+        /// 左端点是否碰撞
         /// </summary>
         [ProtoMember(4)]
-        public _Vector3 Pos;
+        public bool EndPointLeftIsCollision;
+
+        /// <summary>
+        /// 右端点
+        /// </summary>
+        [ProtoMember(5)]
+        public int EndPointRight;
+
+        /// <summary>
+        /// 右端点是否碰撞
+        /// </summary>
+        [ProtoMember(6)]
+        public bool EndPointRightIsCollision;
     }
 }
