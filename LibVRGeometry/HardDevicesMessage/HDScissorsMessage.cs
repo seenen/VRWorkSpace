@@ -40,27 +40,9 @@ namespace LibVRGeometry
         public int HO_ID;
 
         /// <summary>
-        /// 左端点
+        /// 发生交互的组件
         /// </summary>
         [ProtoMember(3)]
-        public int EndPointLeft;
-
-        /// <summary>
-        /// 左端点是否碰撞
-        /// </summary>
-        [ProtoMember(4)]
-        public bool EndPointLeftIsCollision;
-
-        /// <summary>
-        /// 右端点
-        /// </summary>
-        [ProtoMember(5)]
-        public int EndPointRight;
-
-        /// <summary>
-        /// 右端点是否碰撞
-        /// </summary>
-        [ProtoMember(6)]
-        public bool EndPointRightIsCollision;
+        public HDComponentMessage[] coms;
     }
 }

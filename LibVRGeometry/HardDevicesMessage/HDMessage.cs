@@ -9,6 +9,7 @@ namespace LibVRGeometry
     [ProtoInclude(6, typeof(HDScissorsMessage))]
     [ProtoInclude(7, typeof(HDTitaniumClampMessage))]
     [ProtoInclude(8, typeof(HDRobotArmMessage))]
+    [ProtoInclude(9, typeof(HDComponentMessage))]
     public class HDMessage : UnitMessage
     {
         /// <summary>
@@ -41,5 +42,11 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoMember(5)]
         public float width;
+
+        /// <summary>
+        /// 组件信息
+        /// </summary>
+        [ProtoMember(6)]
+        public HDComponentMessage[] cms;
     }
 }
