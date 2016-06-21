@@ -19,6 +19,18 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoMember(2)]
         public float merge_speed;
+
+        /// <summary>
+        /// 左边钳子
+        /// </summary>
+        [ProtoMember(3)]
+        public HDComponentMessage left;
+
+        /// <summary>
+        /// 右边钳子
+        /// </summary>
+        [ProtoMember(4)]
+        public HDComponentMessage right;
     }
 
     /// <summary>
@@ -43,6 +55,12 @@ namespace LibVRGeometry
         /// 发生交互的组件
         /// </summary>
         [ProtoMember(3)]
-        public HDComponentMessage[] coms;
+        public string interactiveComName;
+
+        /// <summary>
+        /// 交互状态的变更
+        /// </summary>
+        [ProtoMember(4)]
+        public bool Collider;
     }
 }

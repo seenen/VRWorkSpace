@@ -40,6 +40,6 @@ namespace LibVRGeometry
         /// 当前组件绑定的物体对象
         /// </summary>
         [ProtoMember(5)]
-        public string objName;
+        public string interactiveComName;
     }
 }

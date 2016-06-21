@@ -58,5 +58,10 @@ namespace VRClient
         {
             throw new NotImplementedException();
         }
+
+        public void OnAddMessage(HDScissorsMessage sm, HDTitaniumClampMessage tc)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

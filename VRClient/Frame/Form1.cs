@@ -300,6 +300,12 @@ namespace VRClient
                 textBox3.Text = trackBar3.Value.ToString();
 
             }
+
+            ((Button)sender).Enabled = false;
+            trackBar1.Enabled = true;
+            trackBar2.Enabled = true;
+            trackBar3.Enabled = true;
+
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)

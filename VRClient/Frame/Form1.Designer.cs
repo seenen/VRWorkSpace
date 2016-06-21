@@ -53,9 +53,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.unity3dControl2 = new VRClient.Unity3dControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.unity3dControl2 = new VRClient.Unity3dControl();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -192,6 +192,7 @@
             // 
             // trackBar3
             // 
+            this.trackBar3.Enabled = false;
             this.trackBar3.Location = new System.Drawing.Point(123, 166);
             this.trackBar3.Maximum = 220;
             this.trackBar3.Name = "trackBar3";
@@ -201,6 +202,7 @@
             // 
             // trackBar2
             // 
+            this.trackBar2.Enabled = false;
             this.trackBar2.Location = new System.Drawing.Point(123, 137);
             this.trackBar2.Maximum = 90;
             this.trackBar2.Minimum = -90;
@@ -211,6 +213,7 @@
             // 
             // trackBar1
             // 
+            this.trackBar1.Enabled = false;
             this.trackBar1.Location = new System.Drawing.Point(123, 104);
             this.trackBar1.Maximum = 90;
             this.trackBar1.Minimum = -90;
@@ -264,6 +267,7 @@
             this.button6.TabIndex = 4;
             this.button6.Text = "加载器材";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
@@ -275,6 +279,7 @@
             this.button5.TabIndex = 3;
             this.button5.Text = "配置剪子";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
@@ -286,6 +291,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "配置钛夹";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
@@ -326,13 +332,6 @@
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // unity3dControl2
-            // 
-            this.unity3dControl2.Location = new System.Drawing.Point(351, 28);
-            this.unity3dControl2.Name = "unity3dControl2";
-            this.unity3dControl2.Size = new System.Drawing.Size(1020, 688);
-            this.unity3dControl2.TabIndex = 1;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkBox1);
@@ -353,6 +352,13 @@
             this.checkBox1.Text = "引擎内日志";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // unity3dControl2
+            // 
+            this.unity3dControl2.Location = new System.Drawing.Point(351, 28);
+            this.unity3dControl2.Name = "unity3dControl2";
+            this.unity3dControl2.Size = new System.Drawing.Size(1020, 688);
+            this.unity3dControl2.TabIndex = 1;
             // 
             // Form1
             // 

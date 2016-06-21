@@ -7,6 +7,7 @@ namespace LibVRGeometry
     /// </summary>
     [ProtoContract]
     [ProtoInclude(3, typeof(HDMessage))]
+    [ProtoInclude(4, typeof(HDComponentMessage))]
     public class UnitMessage
     {
         /// <summary>

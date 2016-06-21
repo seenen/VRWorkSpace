@@ -6,10 +6,9 @@ namespace LibVRGeometry
     /// 器械.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(6, typeof(HDScissorsMessage))]
-    [ProtoInclude(7, typeof(HDTitaniumClampMessage))]
-    [ProtoInclude(8, typeof(HDRobotArmMessage))]
-    [ProtoInclude(9, typeof(HDComponentMessage))]
+    [ProtoInclude(7, typeof(HDScissorsMessage))]
+    [ProtoInclude(8, typeof(HDTitaniumClampMessage))]
+    [ProtoInclude(9, typeof(HDRobotArmMessage))]
     public class HDMessage : UnitMessage
     {
         /// <summary>

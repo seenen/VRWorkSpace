@@ -19,5 +19,17 @@ namespace LibVRGeometry
         /// </summary>
         [ProtoMember(2)]
         public float merge_speed;
+
+        /// <summary>
+        /// 左边钳子
+        /// </summary>
+        [ProtoMember(3)]
+        public HDComponentMessage left;
+
+        /// <summary>
+        /// 右边钳子
+        /// </summary>
+        [ProtoMember(4)]
+        public HDComponentMessage right;
     }
 }

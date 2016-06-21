@@ -40,6 +40,15 @@ namespace LibVRGeometry
     /// </summary>
     public interface IMessage_U2C
     {
+        #region 世界的创建
+        /// <summary>
+        /// 世界创建的回调
+        /// </summary>
+        /// <param name="sm">钳子</param>
+        /// <param name="tc">剪子</param>
+        void OnAddMessage(HDScissorsMessage sm, HDTitaniumClampMessage tc);
+        #endregion
+
         #region 器材和器官的碰撞
         /// <summary>
         /// 器材和器官的碰撞

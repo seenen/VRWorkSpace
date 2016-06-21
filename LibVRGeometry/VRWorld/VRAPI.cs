@@ -45,7 +45,15 @@ namespace LibVRGeometry.VRWorld
 
         public static bool AddMessage(IMessage_U2C msg)
         {
-            return mIWorld.AddMessage(msg);
+            bool ret = mIWorld.AddMessage(msg);
+
+            if (ret)
+            {
+                msg.OnAddMessage(mIWorld.sm, mIWorld.tc);
+
+            }
+
+            return ret;
 
         }
     }
